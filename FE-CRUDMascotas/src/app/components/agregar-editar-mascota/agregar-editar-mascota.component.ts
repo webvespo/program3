@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Mascota } from '../../interfaces/mascota';
+import { MascotaService } from 'src/app/services/mascota.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-agregar-editar-mascota',
@@ -12,7 +14,9 @@ export class AgregarEditarMascotaComponent {
   form: FormGroup
   
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private _snackBar: MatSnackBar,
+      private _mascotaService: MascotaService) {
     this.form = this.fb.group({
       nombre:['', Validators.required],
       raza:['', Validators.required],
@@ -24,7 +28,6 @@ export class AgregarEditarMascotaComponent {
   }
 
   ngOnInit(): void {
-
   }
   agregarMascota() {
     //console.log(this.form)
@@ -38,7 +41,9 @@ export class AgregarEditarMascotaComponent {
       edad: this.form.value.edad,
       peso: this.form.value.peso
     }
-    console.log(mascota)
+    //Enviamos el objeto al BE
+    this._mascotaService.addMascota(mascota).subscribe(data =>{
+      console.log(data)
+    })
   }
-
 }

@@ -67,15 +67,20 @@ export class ListadoMascotaComponent implements OnInit, AfterViewInit  {
         )
   }
 
-  eliminarMascota() {
+  eliminarMascota(id: number) {
     this.loading=true;
-    setTimeout(() => {
+    this._mascotaService.deleteMascota(id).subscribe(() =>{
+      this.mensajeExito();
       this.loading=false;
-      this._snackBar.open('Se eliminó la mascota', '',{
+      this.obtenerMascotas();
+    });
+  }
+
+  mensajeExito() {
+    this._snackBar.open('Se eliminó la mascota', '',{
         duration: 3000,
         horizontalPosition: 'right',
       });
-    }, 3000);
-    
-  }
+    }
 }
+
