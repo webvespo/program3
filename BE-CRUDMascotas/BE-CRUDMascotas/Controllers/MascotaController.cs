@@ -1,4 +1,5 @@
-﻿using BE_CRUDMascotas.Models;
+﻿using AutoMapper;
+using BE_CRUDMascotas.Models;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,11 @@ namespace BE_CRUDMascotas.Controllers
     public class MascotaController : ControllerBase
     {
         private readonly AplicationDbContext _context;
-        public MascotaController(AplicationDbContext context)
+        private readonly IMapper _mapper;
+        public MascotaController(AplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -83,5 +86,36 @@ namespace BE_CRUDMascotas.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, Mascota mascota)
+        {
+            try
+            {
+                if (id != mascota.Id)
+                {
+                    return BadRequest();
+                }
+                var mascotaItem = await _context.Mascotas.FindAsync(id);
+                if (mascotaItem == null)
+                {
+                    return NotFound();
+                }
+                mascotaItem.Nombre = mascota.Nombre;
+                        mascotaItem.Raza = mascota.Raza;
+                        mascotaItem.Edad = mascota.Edad;
+                        mascotaItem.Peso= mascota.Peso;
+                        mascotaItem.Color= mascota.Color;
+                        await _context.SaveChangesAsync();
+
+                return NoContent();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
