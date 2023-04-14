@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using BE_CRUDMascotas.Models;
-using Microsoft.AspNetCore.Components.Forms;
+using BE_CRUDMascotas.Models.DTO;
+using BE_CRUDMascotas.Models.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
 
 namespace BE_CRUDMascotas.Controllers
 {
@@ -12,37 +13,51 @@ namespace BE_CRUDMascotas.Controllers
     [ApiController]
     public class MascotaController : ControllerBase
     {
-        private readonly AplicationDbContext _context;
+
         private readonly IMapper _mapper;
-        public MascotaController(AplicationDbContext context, IMapper mapper)
+        private readonly IMascotaRepository _mascotaRepository;
+
+        public MascotaController(IMapper mapper, IMascotaRepository mascotaRepository)
         {
-            _context = context;
             _mapper = mapper;
+            _mascotaRepository = mascotaRepository;
         }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             try
             {
-                var listMascotas = await _context.Mascotas.ToListAsync();
-                return Ok(listMascotas);
+                var listMascotas = await _mascotaRepository.GetListMascotas();
+
+                var listMascotasDto = _mapper.Map<IEnumerable<MascotaDTO>>(listMascotas);
+
+                return Ok(listMascotasDto);
             }
             catch (Exception ex)
             {
+
                 return BadRequest(ex.Message);
             }
+
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             try
             {
-                var mascota = await _context.Mascotas.FindAsync(id);
+                var mascota = await _mascotaRepository.GetMascota(id);
+
                 if (mascota == null)
                 {
                     return NotFound();
                 }
-                return Ok(mascota);
+
+                var mascotaDto = _mapper.Map<MascotaDTO>(mascota);
+
+                return Ok(mascotaDto);
+
             }
             catch (Exception ex)
             {
@@ -50,63 +65,71 @@ namespace BE_CRUDMascotas.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var mascota = await _context.Mascotas.FindAsync(id);
+                var mascota = await _mascotaRepository.GetMascota(id);
+
                 if (mascota == null)
                 {
                     return NotFound();
                 }
-                _context.Mascotas.Remove(mascota);
-                await _context.SaveChangesAsync();
+
+                await _mascotaRepository.DeleteMascota(mascota);
+
                 return NoContent();
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost]
-        public async Task<IActionResult> Post(Mascota mascota)
+        public async Task<IActionResult> Post(MascotaDTO mascotaDto)
         {
             try
             {
+                var mascota = _mapper.Map<Mascota>(mascotaDto);
+
                 mascota.FechaCreacion = DateTime.Now;
-                _context.Add(mascota);
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("Get", new {id = mascota.Id},mascota);
+
+                mascota = await _mascotaRepository.AddMascota(mascota);
+
+                var mascotaItemDto = _mapper.Map<MascotaDTO>(mascota);
+
+                return CreatedAtAction("Get", new { id = mascotaItemDto.Id }, mascotaItemDto);
+
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Mascota mascota)
+        public async Task<IActionResult> Put(int id, MascotaDTO mascotaDto)
         {
             try
             {
+                var mascota = _mapper.Map<Mascota>(mascotaDto);
+
                 if (id != mascota.Id)
                 {
                     return BadRequest();
                 }
-                var mascotaItem = await _context.Mascotas.FindAsync(id);
+
+                var mascotaItem = await _mascotaRepository.GetMascota(id);
+
                 if (mascotaItem == null)
                 {
                     return NotFound();
                 }
-                mascotaItem.Nombre = mascota.Nombre;
-                        mascotaItem.Raza = mascota.Raza;
-                        mascotaItem.Edad = mascota.Edad;
-                        mascotaItem.Peso= mascota.Peso;
-                        mascotaItem.Color= mascota.Color;
-                        await _context.SaveChangesAsync();
+
+                await _mascotaRepository.UpdateMascota(mascota);
 
                 return NoContent();
 
@@ -116,6 +139,7 @@ namespace BE_CRUDMascotas.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
 
     }
 }

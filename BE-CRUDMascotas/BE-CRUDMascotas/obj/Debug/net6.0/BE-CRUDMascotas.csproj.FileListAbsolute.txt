@@ -85,3 +85,5 @@ E:\Datos-usuariol\Desktop\2023\Prog3\BE-CRUDMascotas\BE-CRUDMascotas\bin\Debug\n
 E:\Datos-usuariol\Desktop\2023\Prog3\BE-CRUDMascotas\BE-CRUDMascotas\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\Datos-usuariol\Desktop\2023\Prog3\BE-CRUDMascotas\BE-CRUDMascotas\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 E:\Datos-usuariol\Desktop\2023\Prog3\BE-CRUDMascotas\BE-CRUDMascotas\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\Datos-usuariol\Desktop\2023\Prog3\BE-CRUDMascotas\BE-CRUDMascotas\bin\Debug\net6.0\AutoMapper.dll
+E:\Datos-usuariol\Desktop\2023\Prog3\BE-CRUDMascotas\BE-CRUDMascotas\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
