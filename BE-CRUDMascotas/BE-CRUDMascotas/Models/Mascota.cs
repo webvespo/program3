@@ -11,5 +11,11 @@ namespace BE_CRUDMascotas.Models
         public int Edad { get; set; }
         public float Peso { get; set; }
         public DateTime FechaCreacion { get; set; }
+
+        public int UsuarioId { get; set; }
+
+        public Usuario usuario { get; set; }
+
     }
+
 }

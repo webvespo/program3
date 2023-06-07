@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BE_CRUDMascotas.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20230404033253_v0.1")]
-    partial class v01
+    [Migration("20230605021232_ojo")]
+    partial class ojo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,9 +54,41 @@ namespace BE_CRUDMascotas.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("UsuarioId");
+
                     b.ToTable("Mascotas");
+                });
+
+            modelBuilder.Entity("BE_CRUDMascotas.Models.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("BE_CRUDMascotas.Models.Mascota", b =>
+                {
+                    b.HasOne("BE_CRUDMascotas.Models.Usuario", "usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("usuario");
                 });
 #pragma warning restore 612, 618
         }

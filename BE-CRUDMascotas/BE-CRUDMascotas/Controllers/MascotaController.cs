@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BE_CRUDMascotas.Models;
 using BE_CRUDMascotas.Models.DTO;
-using BE_CRUDMascotas.Models.Repository;
+using BE_CRUDMascotas.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +15,9 @@ namespace BE_CRUDMascotas.Controllers
     {
 
         private readonly IMapper _mapper;
-        private readonly IMascotaRepository _mascotaRepository;
+        private readonly IRepository<Mascota> _mascotaRepository;
 
-        public MascotaController(IMapper mapper, IMascotaRepository mascotaRepository)
+        public MascotaController(IMapper mapper, IRepository<Mascota> mascotaRepository)
         {
             _mapper = mapper;
             _mascotaRepository = mascotaRepository;
@@ -28,7 +28,7 @@ namespace BE_CRUDMascotas.Controllers
         {
             try
             {
-                var listMascotas = await _mascotaRepository.GetListMascotas();
+                var listMascotas = await _mascotaRepository.GetList();
 
                 var listMascotasDto = _mapper.Map<IEnumerable<MascotaDTO>>(listMascotas);
 
@@ -47,7 +47,7 @@ namespace BE_CRUDMascotas.Controllers
         {
             try
             {
-                var mascota = await _mascotaRepository.GetMascota(id);
+                var mascota = await _mascotaRepository.GetById(id);
 
                 if (mascota == null)
                 {
@@ -71,14 +71,14 @@ namespace BE_CRUDMascotas.Controllers
         {
             try
             {
-                var mascota = await _mascotaRepository.GetMascota(id);
+                var mascota = await _mascotaRepository.GetById(id);
 
                 if (mascota == null)
                 {
                     return NotFound();
                 }
 
-                await _mascotaRepository.DeleteMascota(mascota);
+                await _mascotaRepository.Delete(mascota);
 
                 return NoContent();
             }
@@ -97,7 +97,7 @@ namespace BE_CRUDMascotas.Controllers
 
                 mascota.FechaCreacion = DateTime.Now;
 
-                mascota = await _mascotaRepository.AddMascota(mascota);
+                mascota = await _mascotaRepository.Add(mascota);
 
                 var mascotaItemDto = _mapper.Map<MascotaDTO>(mascota);
 
@@ -122,14 +122,14 @@ namespace BE_CRUDMascotas.Controllers
                     return BadRequest();
                 }
 
-                var mascotaItem = await _mascotaRepository.GetMascota(id);
+                var mascotaItem = await _mascotaRepository.GetById(id);
 
                 if (mascotaItem == null)
                 {
                     return NotFound();
                 }
 
-                await _mascotaRepository.UpdateMascota(mascota);
+                await _mascotaRepository.Update(mascota);
 
                 return NoContent();
 

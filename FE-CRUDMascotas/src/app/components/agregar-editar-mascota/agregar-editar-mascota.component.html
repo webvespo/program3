@@ -39,6 +39,12 @@
                         <input type="number" formControlName="peso" matInput autocomplete="off">
                     </mat-form-field>
                 </mat-grid-tile>
+                <mat-grid-tile>
+                  <mat-form-field formGroupName="usuario" appearance="outline">
+                    <mat-label for="nombreUsuario">Dueño</mat-label>
+                    <input type="text" formControlName="nombre" matInput autocomplete="off">
+                  </mat-form-field>
+              </mat-grid-tile>
                 <mat-grid-tile [colspan]="2">
                     <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
                     <button mat-raised-button routerLink="/listMascotas">Volver</button>

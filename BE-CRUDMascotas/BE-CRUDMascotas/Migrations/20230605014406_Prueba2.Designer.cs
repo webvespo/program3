@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BE_CRUDMascotas.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20230404033253_v0.1")]
-    partial class v01
+    [Migration("20230605014406_Prueba2")]
+    partial class Prueba2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,22 @@ namespace BE_CRUDMascotas.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Mascotas");
+                });
+
+            modelBuilder.Entity("BE_CRUDMascotas.Models.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }
