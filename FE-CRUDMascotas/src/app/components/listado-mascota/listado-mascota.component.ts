@@ -21,7 +21,7 @@ import { MascotaService } from 'src/app/services/mascota.service';
   styleUrls: ['./listado-mascota.component.css']
 })
 export class ListadoMascotaComponent implements OnInit, AfterViewInit  {
-  displayedColumns: string[] = ['nombre','edad','raza','color','peso','Dueño','acciones'];
+  displayedColumns: string[] = ['nombre','edad','Raza','color','peso','Dueño','acciones'];
   dataSource = new MatTableDataSource<Mascota>();
   loading: boolean = false;
 

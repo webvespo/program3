@@ -22,9 +22,9 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Edad </th>
           <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
         </ng-container>
-        <ng-container matColumnDef="raza">
+        <ng-container matColumnDef="Raza">
           <th mat-header-cell *matHeaderCellDef> Raza </th>
-          <td mat-cell *matCellDef="let element"> {{element.raza}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.raza.nombre}} </td>
         </ng-container>
         <ng-container matColumnDef="color">
           <th mat-header-cell *matHeaderCellDef> Color </th>

@@ -16,10 +16,10 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Raza</mat-label>
-                        <input formControlName="raza" matInput autocomplete="off">
-                    </mat-form-field>
+                    <mat-form-field formGroupName="raza" appearance="outline">
+                        <mat-label for="nombreRaza">Raza</mat-label>
+                        <input type="text" formControlName="nombre" matInput autocomplete="off">
+                      </mat-form-field>    
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field appearance="outline">

@@ -17,6 +17,7 @@ namespace BE_CRUDMascotas.Repository
 		{
 			_context.Mascotas.Add(mascota);
 			_context.Usuario.Add(mascota.usuario);
+			_context.Raza.Add(mascota.raza);
 			await _context.SaveChangesAsync();
 			return mascota;
 		}
@@ -46,7 +47,7 @@ namespace BE_CRUDMascotas.Repository
 			if (mascotaItem != null)
 			{
 				mascotaItem.Nombre = mascota.Nombre;
-				mascotaItem.Raza = mascota.Raza;
+				mascotaItem.raza.Nombre = mascota.raza.Nombre;
 				mascotaItem.Edad = mascota.Edad;
 				mascotaItem.Peso = mascota.Peso;
 				mascotaItem.Color = mascota.Color;

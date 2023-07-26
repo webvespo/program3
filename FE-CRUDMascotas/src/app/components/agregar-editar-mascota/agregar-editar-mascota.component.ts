@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Mascota } from 'src/app/interfaces/mascota';
 import { MascotaService } from 'src/app/services/mascota.service';
+//import { Raza } from '../../interfaces/Raza';
 
 @Component({
   selector: 'app-agregar-editar-mascota',
@@ -25,11 +26,14 @@ export class AgregarEditarMascotaComponent implements OnInit {
     {
       this.form = this.fb.group({
         nombre: ['', Validators.required],
-        raza: ['', Validators.required],
+        //raza: ['', Validators.required],
         color: ['', Validators.required],
         edad: ['', Validators.required],
         peso: ['', Validators.required],
         usuario: this.fb.group({
+          nombre: ['', Validators.required]
+        }),
+        raza: this.fb.group({
           nombre: ['', Validators.required]
         })
       });
@@ -50,12 +54,15 @@ export class AgregarEditarMascotaComponent implements OnInit {
     this._mascotaService.getMascota(id).subscribe(data => {
       this.form.patchValue({
         nombre: data.nombre,
-        raza: data.raza,
+        //raza: data.raza,
         color: data.color,
         edad: data.edad,
         peso: data.peso,
         usuario: {
           nombre: data.usuario.nombre
+        },
+        raza: {
+          nombre: data.raza.nombre
         }
       });
       console.log(data)
@@ -71,7 +78,7 @@ export class AgregarEditarMascotaComponent implements OnInit {
     const mascota: Mascota = {
       id: 0,
       nombre: this.form.value.nombre,
-      raza: this.form.value.raza,
+      //raza: this.form.value.raza,
       color: this.form.value.color,
       edad: this.form.value.edad,
       peso: this.form.value.peso,
@@ -80,6 +87,11 @@ export class AgregarEditarMascotaComponent implements OnInit {
       usuario: {
         id: 0,
         nombre: this.form.value.usuario.nombre
+      },
+      razaId: 0,
+      raza: {
+        id: 0,
+        nombre: this.form.value.raza.nombre
       }
     };
 
