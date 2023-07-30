@@ -1,5 +1,6 @@
+using BE_CRUDMascotas.Data;
 using BE_CRUDMascotas.Models;
-using BE_CRUDMascotas.Models.Repository;
+using BE_CRUDMascotas.Repository;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,11 +28,12 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
 //Automapper
 
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IRepository<Mascota>, MascotaRepository>();
 
 var app = builder.Build();
 
 // Add Services
-builder.Services.AddScoped<IMascotaRepository, MascotaRepository>();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -12,8 +12,8 @@
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
-      
-        
+
+
         <ng-container matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
           <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
@@ -22,9 +22,9 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Edad </th>
           <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
         </ng-container>
-        <ng-container matColumnDef="raza">
+        <ng-container matColumnDef="Raza">
           <th mat-header-cell *matHeaderCellDef> Raza </th>
-          <td mat-cell *matCellDef="let element"> {{element.raza}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.raza.nombre}} </td>
         </ng-container>
         <ng-container matColumnDef="color">
           <th mat-header-cell *matHeaderCellDef> Color </th>
@@ -34,9 +34,13 @@
           <th mat-header-cell *matHeaderCellDef> Peso </th>
           <td mat-cell *matCellDef="let element"> {{element.peso}} </td>
         </ng-container>
+        <ng-container matColumnDef="Dueño">
+          <th mat-header-cell *matHeaderCellDef> Dueño </th>
+          <td mat-cell *matCellDef="let element"> {{element.usuario.nombre}} </td>
+        </ng-container>
         <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef>
-            <button routerLink="/agregarMascota" class="agregar" mat-raised-button color="primary">Aceptar</button>
+            <button routerLink="/agregarMascota" class="agregar" mat-raised-button color="primary">Agregar</button>
           </th>
           <td mat-cell *matCellDef="let element">
             <mat-icon routerLink="/verMascota/{{ element.id }}" matTooltip="Ver" class="search" fontIcon="search"></mat-icon>
@@ -55,5 +59,4 @@
 </div>
 
 
-  
-  
+

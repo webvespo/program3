@@ -3197,11 +3197,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Datos-usuariol\\Desktop\\2023\\Prog3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
+      "projectUniqueName": "E:\\Datos-usuariol\\Desktop\\2023\\Prog3\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
       "projectName": "BE-CRUDMascotas",
-      "projectPath": "E:\\Datos-usuariol\\Desktop\\2023\\Prog3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
+      "projectPath": "E:\\Datos-usuariol\\Desktop\\2023\\Prog3\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
       "packagesPath": "C:\\Users\\vespo.daniel\\.nuget\\packages\\",
-      "outputPath": "E:\\Datos-usuariol\\Desktop\\2023\\Prog3\\BE-CRUDMascotas\\BE-CRUDMascotas\\obj\\",
+      "outputPath": "E:\\Datos-usuariol\\Desktop\\2023\\Prog3\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vespo.daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",

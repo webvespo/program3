@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Mascota } from 'src/app/interfaces/mascota';
 import { MascotaService } from 'src/app/services/mascota.service';
+//import { Raza } from '../../interfaces/Raza';
 
 @Component({
   selector: 'app-agregar-editar-mascota',
@@ -21,14 +22,21 @@ export class AgregarEditarMascotaComponent implements OnInit {
     private _mascotaService: MascotaService,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private aRoute: ActivatedRoute) {
-    this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      raza: ['', Validators.required],
-      color: ['', Validators.required],
-      edad: ['', Validators.required],
-      peso: ['', Validators.required],
-    })
+    private aRoute: ActivatedRoute)
+    {
+      this.form = this.fb.group({
+        nombre: ['', Validators.required],
+        //raza: ['', Validators.required],
+        color: ['', Validators.required],
+        edad: ['', Validators.required],
+        peso: ['', Validators.required],
+        usuario: this.fb.group({
+          nombre: ['', Validators.required]
+        }),
+        raza: this.fb.group({
+          nombre: ['', Validators.required]
+        })
+      });
     this.id = Number(this.aRoute.snapshot.paramMap.get('id'));
   }
 
@@ -38,33 +46,55 @@ export class AgregarEditarMascotaComponent implements OnInit {
       this.operacion = 'Editar';
       this.obtenerMascota(this.id)
     }
+
   }
 
   obtenerMascota(id: number) {
     this.loading = true;
     this._mascotaService.getMascota(id).subscribe(data => {
-      this.form.setValue({
+      this.form.patchValue({
         nombre: data.nombre,
-        raza: data.raza,
+        //raza: data.raza,
         color: data.color,
         edad: data.edad,
-        peso: data.peso
-      })
+        peso: data.peso,
+        usuario: {
+          nombre: data.usuario.nombre
+        },
+        raza: {
+          nombre: data.raza.nombre
+        }
+      });
+      console.log(data)
       this.loading = false;
-    })
+    });
   }
+
 
   agregarEditarMascota() {
     /* const nombre = this.form.get('nombre')?.value; */
 
     // Armamos el objeto
     const mascota: Mascota = {
+      id: 0,
       nombre: this.form.value.nombre,
-      raza: this.form.value.raza,
+      //raza: this.form.value.raza,
       color: this.form.value.color,
       edad: this.form.value.edad,
-      peso: this.form.value.peso
-    }
+      peso: this.form.value.peso,
+      fechaCreacion: new Date(),
+      usuarioId: 0,
+      usuario: {
+        id: 0,
+        nombre: this.form.value.usuario.nombre
+      },
+      razaId: 0,
+      raza: {
+        id: 0,
+        nombre: this.form.value.raza.nombre
+      }
+    };
+
 
     if(this.id != 0) {
       mascota.id = this.id;
@@ -85,10 +115,12 @@ export class AgregarEditarMascotaComponent implements OnInit {
   }
 
   agregarMascota(mascota: Mascota) {
+      console.log(mascota)
       this._mascotaService.addMascota(mascota).subscribe(data => {
         this.mensajeExito('registrada');
         this.router.navigate(['/listMascotas']);
       })
+
   }
 
   mensajeExito(texto: string) {

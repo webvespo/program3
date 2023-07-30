@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Mascota } from '../../interfaces/mascota';
+
 import { MascotaService } from 'src/app/services/mascota.service';
 
 
@@ -20,18 +21,18 @@ import { MascotaService } from 'src/app/services/mascota.service';
   styleUrls: ['./listado-mascota.component.css']
 })
 export class ListadoMascotaComponent implements OnInit, AfterViewInit  {
-  displayedColumns: string[] = ['nombre','edad','raza','color','peso','acciones'];
+  displayedColumns: string[] = ['nombre','edad','Raza','color','peso','Dueño','acciones'];
   dataSource = new MatTableDataSource<Mascota>();
   loading: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _snackBar: MatSnackBar, 
+  constructor(private _snackBar: MatSnackBar,
     private _mascotaService:MascotaService){}
   ngOnInit(): void {
     this.obtenerMascotas();
-    
+
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
