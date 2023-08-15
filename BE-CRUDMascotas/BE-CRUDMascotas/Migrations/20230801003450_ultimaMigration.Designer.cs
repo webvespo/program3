@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BE_CRUDMascotas.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20230605014406_Prueba2")]
-    partial class Prueba2
+    [Migration("20230801003450_ultimaMigration")]
+    partial class ultimaMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,13 +50,35 @@ namespace BE_CRUDMascotas.Migrations
                     b.Property<float>("Peso")
                         .HasColumnType("real");
 
-                    b.Property<string>("Raza")
-                        .IsRequired()
+                    b.Property<int>("RazaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RazaId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Mascotas");
+                });
+
+            modelBuilder.Entity("BE_CRUDMascotas.Models.Raza", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Mascotas");
+                    b.ToTable("Raza");
                 });
 
             modelBuilder.Entity("BE_CRUDMascotas.Models.Usuario", b =>
@@ -72,7 +94,31 @@ namespace BE_CRUDMascotas.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuario");
+                });
+
+            modelBuilder.Entity("BE_CRUDMascotas.Models.Mascota", b =>
+                {
+                    b.HasOne("BE_CRUDMascotas.Models.Raza", "raza")
+                        .WithMany()
+                        .HasForeignKey("RazaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BE_CRUDMascotas.Models.Usuario", "usuario")
+                        .WithMany("Mascotas")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("raza");
+
+                    b.Navigation("usuario");
+                });
+
+            modelBuilder.Entity("BE_CRUDMascotas.Models.Usuario", b =>
+                {
+                    b.Navigation("Mascotas");
                 });
 #pragma warning restore 612, 618
         }

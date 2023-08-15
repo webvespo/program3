@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace BE_CRUDMascotas.Models
 {
@@ -8,4 +9,6 @@ namespace BE_CRUDMascotas.Models
 		public int Id { get; set; }
 		public string? Nombre { get; set; }
 	}
+
+	
 }

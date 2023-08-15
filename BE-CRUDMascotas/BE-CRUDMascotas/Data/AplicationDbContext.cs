@@ -13,6 +13,5 @@ namespace BE_CRUDMascotas.Data
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Raza> Raza { get; set; }
 
-	
-	}
+    }
 }
