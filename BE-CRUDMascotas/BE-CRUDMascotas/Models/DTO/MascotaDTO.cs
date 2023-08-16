@@ -1,4 +1,6 @@
-﻿namespace BE_CRUDMascotas.Models.DTO
+﻿using System.Text.Json.Serialization;
+
+namespace BE_CRUDMascotas.Models.DTO
 {
     public class MascotaDTO
     {
@@ -10,11 +12,11 @@
 		public float Peso { get; set; }
 		public DateTime FechaCreacion { get; set; }
 
-		public int UsuarioId { get; set; }
-
+		// public int UsuarioId { get; set; }
+		
 		public Usuario usuario { get; set; }
 
-		public int RazaId { get; set; }
+		// public int RazaId { get; set; }
 		public Raza raza { get; set; }
 
 	}
