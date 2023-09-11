@@ -13,6 +13,7 @@ import { AgregarEditarMascotaComponent } from './components/agregar-editar-masco
 import { ListadoMascotaComponent } from './components/listado-mascota/listado-mascota.component';
 import { VerMascotaComponent } from './components/ver-mascota/ver-mascota.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EntradaComponent } from './components/entrada/entrada.component';
 
 
 
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     AgregarEditarMascotaComponent,
     ListadoMascotaComponent,
-    VerMascotaComponent
+    VerMascotaComponent,
+    EntradaComponent
   ],
   imports: [
     BrowserModule,

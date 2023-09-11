@@ -30,7 +30,7 @@ namespace BE_CRUDMascotas.Repository
 
 		public async Task<Mascota> GetById(int id)
 		{
-			return await _context.Mascotas.Include(x=>x.usuario).
+			return await _context.Mascotas.Include(x=>x.usuario).Include(x=>x.raza).
 				Where(x=>x.Id == id).FirstOrDefaultAsync() ?? throw new ArgumentNullException() ;
 
 		}

@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FE-CRUDMascotas';
+
+
+  datosMenu=[{
+    'titulo':'google',
+    'icon':'',
+    'url':'https://www.google.com.ar/'
+  }];
+
+
+
 }

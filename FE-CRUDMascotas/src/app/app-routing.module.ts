@@ -5,9 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListadoMascotaComponent } from './components/listado-mascota/listado-mascota.component';
 import { AgregarEditarMascotaComponent } from './components/agregar-editar-mascota/agregar-editar-mascota.component';
 import { VerMascotaComponent } from './components/ver-mascota/ver-mascota.component';
+import { EntradaComponent } from './components/entrada/entrada.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'listMascotas', pathMatch: 'full'},
+  { path: '', redirectTo: 'app-entrada', pathMatch: 'full'},
+  { path: 'app-entrada', component: EntradaComponent},
   { path: 'listMascotas', component: ListadoMascotaComponent},
   { path: 'agregarMascota', component: AgregarEditarMascotaComponent},
   { path: 'verMascota/:id', component: VerMascotaComponent},

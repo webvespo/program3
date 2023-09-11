@@ -15,7 +15,7 @@ namespace BE_CRUDMascotas.Models
         public int UsuarioId { get; set; }        
         public Usuario? usuario { get; set; }
         public int RazaId { get; set; }      
-        public Raza raza { get; set; }
+        public Raza? raza { get; set; }
     }
 
 }
