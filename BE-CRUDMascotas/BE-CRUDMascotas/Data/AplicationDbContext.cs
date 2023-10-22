@@ -5,7 +5,7 @@ namespace BE_CRUDMascotas.Data
 {
     public class AplicationDbContext : DbContext
     {
-        public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options)
+        public AplicationDbContext(DbContextOptions<AplicationDbContext> options): base(options)
         {
 
         }

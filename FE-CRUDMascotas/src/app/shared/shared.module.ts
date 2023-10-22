@@ -19,6 +19,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+
+
 
 //Componentes
 import { SpinnerComponent } from './spinner/spinner.component';
@@ -42,7 +49,11 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatGridListModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule
   ],
   exports: [
     MatTableModule,
@@ -59,7 +70,11 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatGridListModule,
     SpinnerComponent,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule
   ]
 })
 export class SharedModule { }
