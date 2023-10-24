@@ -16,7 +16,7 @@ namespace BE_CRUDMascotas.Repository
 		public async Task<Mascota> Add(Mascota mascota)
 		{
 			_context.Mascotas.Add(mascota);
-			_context.Usuario.Add(mascota.usuario);
+			_context.Usuarios.Add(mascota.NombreUsuario);
 			_context.Raza.Add(mascota.raza);
 			await _context.SaveChangesAsync();
 			return mascota;
@@ -30,14 +30,14 @@ namespace BE_CRUDMascotas.Repository
 
 		public async Task<Mascota> GetById(int id)
 		{
-			return await _context.Mascotas.Include(x=>x.usuario).
+			return await _context.Mascotas.Include(x=>x.NombreUsuario).Include(x=>x.raza).
 				Where(x=>x.Id == id).FirstOrDefaultAsync() ?? throw new ArgumentNullException() ;
 
 		}
 
 		public async Task<List<Mascota>> GetList()
 		{
-			return await _context.Mascotas.Include(x=>x.usuario).Include(x=>x.raza).ToListAsync();
+			return await _context.Mascotas.Include(x=>x.NombreUsuario).Include(x=>x.raza).ToListAsync();
 		}
 
 		public async Task Update(Mascota mascota)
@@ -51,7 +51,7 @@ namespace BE_CRUDMascotas.Repository
 				mascotaItem.Edad = mascota.Edad;
 				mascotaItem.Peso = mascota.Peso;
 				mascotaItem.Color = mascota.Color;
-				mascotaItem.usuario.Nombre = mascota.usuario.Nombre;		
+				mascotaItem.NombreUsuario = mascota.NombreUsuario;		
 
 				await _context.SaveChangesAsync();
 			}

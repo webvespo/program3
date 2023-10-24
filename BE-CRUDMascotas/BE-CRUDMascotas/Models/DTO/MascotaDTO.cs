@@ -14,7 +14,7 @@ namespace BE_CRUDMascotas.Models.DTO
 
 		// public int UsuarioId { get; set; }
 		
-		public Usuario usuario { get; set; }
+		public Usuario NombreUsuario { get; set; }
 
 		// public int RazaId { get; set; }
 		public Raza raza { get; set; }

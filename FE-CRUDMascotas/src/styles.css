@@ -13,3 +13,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .container {
     margin: 0 20%
 }
+
+.containerSub {
+    margin-left: 100%;
+    margin-right: 100%;
+    margin-top: 5px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
