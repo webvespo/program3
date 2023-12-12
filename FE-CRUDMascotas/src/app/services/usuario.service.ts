@@ -1,38 +1,43 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PeriodicElement } from '../components/dashboard/usuarios/usuarios.component';
-import { Usuario } from '../interfaces/Usuario';
+import { Observable } from 'rxjs';
+import { Dueño } from '../interfaces/dueño';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  ELEMENT_DATA: PeriodicElement[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
-  
+  private myAppUrl: string = 'https://localhost:7261/';
+  private myApiUrl: string = 'api/Usuario/';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getUsuario() {
-    return this.ELEMENT_DATA.slice();
+  getUsuarios(): Observable<Dueño[]> {
+    return this.http.get<Dueño[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
 
-  eliminarUsuario(index: number){ 
-    this.ELEMENT_DATA.splice(index,1);
+  getUsuario(id: number): Observable<Dueño> {
+    return this.http.get<Dueño>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  }
+  deleteUsuario(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  }
+  addMUsuario(usuario: Dueño): Observable<Dueño> {
+    return this.http.post<Dueño>(`${this.myAppUrl}${this.myApiUrl}`, usuario);
+  }
+  updateUsuario(id: number, usuario: Dueño): Observable<void> {
+    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, usuario);
   }
 
- /*  agregarUsuario(usuario: Usuario) {
-    this.ELEMENT_DATA.unshift(nombre);
-  } */
+  EditarUsuario(code: number, usuario: Dueño): Observable<void> {
+    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${code}`, usuario);
+  }
 
+  obtenerUsuarioPorID(code: any) {
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}${code}`);
+  }
 
+  eliminarUsuarioPorID(data: any) {
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${data}`);
+  }
 }

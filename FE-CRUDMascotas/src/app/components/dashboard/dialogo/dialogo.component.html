@@ -1,0 +1,49 @@
+<form [formGroup]="miFormulario" (ngSubmit)="guardarCambios()">
+<h2 mat-dialog-title>Ficha personal</h2>
+<div mat-dialog-content>{{ingresoDatos.title}}
+    <mat-form-field>
+        <mat-label>Usuario: </mat-label>
+        <input formControlName="nombreUsuario" matInput>
+        <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Nombre: </mat-label>
+        <input formControlName="nombre" matInput>
+        <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Apellido: </mat-label>
+        <input formControlName="apellido" matInput>
+        <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Sexo: </mat-label>
+        <input formControlName="sexo" matInput>
+        <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+</div>
+<mat-dialog-actions>
+    <button mat-raised-button type="submit" name=(ingresoDatos.boton) color="primary">{{ingresoDatos.boton}}</button>
+    <button mat-button mat-dialog-close color="secondary">Volver</button>
+    <button routerLink="/dashboard/" mat-button mat-dialog-close color="warn">Salir</button>
+</mat-dialog-actions>
+</form>
+<!-- <div class="title">
+    <h1>Ficha personal</h1>
+</div>
+<div  *ngIf="usuario!= null" class="container">
+    <mat-card class="card"> -->
+        <!-- <mat-card-title> {{ usuario.nombreUsuario }} </mat-card-title> -->
+<!--         <mat-card-content>
+            <p><strong>Nombre Usuario:</strong> {{ usuario.nombreUsuario }} </p>
+            <p><strong>Nombre:</strong> {{ usuario.nombre }} </p>
+            <p><strong>Apellido:</strong> {{ usuario.apellido }} </p>
+            <p><strong>Sexo:</strong> {{ usuario.sexo }} Kgs</p>
+            <p><strong>Mascotas??:</strong> Listado mascota</p>
+        </mat-card-content>
+            <mat-card-actions>
+                <button routerLink="" mat-raised-button>Volver</button>
+            </mat-card-actions>
+    </mat-card>
+</div>
+ -->

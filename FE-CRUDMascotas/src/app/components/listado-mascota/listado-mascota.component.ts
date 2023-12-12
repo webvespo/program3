@@ -7,14 +7,6 @@ import { Mascota } from '../../interfaces/mascota';
 
 import { MascotaService } from 'src/app/services/mascota.service';
 
-
-
-/* const listMascotas: Mascota[] = [
-  {nombre:'Ciro',edad:3,raza:'Golden',color:'Dorado',peso:20}
-];
- */
-
-
 @Component({
   selector: 'app-listado-mascota',
   templateUrl: './listado-mascota.component.html',

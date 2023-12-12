@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Mascota } from '../interfaces/mascota';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
