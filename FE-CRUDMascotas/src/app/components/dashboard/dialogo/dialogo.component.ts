@@ -38,6 +38,7 @@ export class DialogoComponent implements OnInit {
       })
     })
   }
+  
   cerrarDialogo() { this.ref.close(); }
 
   miFormulario = this.buildr.group({
@@ -47,24 +48,35 @@ export class DialogoComponent implements OnInit {
     sexo: this.buildr.control(''),
   });
 
+    tioEdit(){
+    const editaDatosPersona: Dueño = {
+      id: 0,
+      nombreUsuario: this.editarData.nombreUsuario,
+        nombre: this.editarData.nombre,
+        apellido: this.editarData.apellido,
+        sexo: this.editarData.sexo,
+    };
+  }
+
+
   guardarCambios() {
-    console.log(this.miFormulario);
     if(this.id !=0) {
+        // if (this.ingresoDatos.boton == 'Guardar') {
+    //  this.editarUsuario(this.ingresoDatos.code,this.NewForm.setValu(this.miFormulario));
+    //}
+    
+    if (this.ingresoDatos.boton == "Eliminar") {
+      console.log(this.ingresoDatos.code);
+
+      this.eliminarUsuario();
+    }
+    //if (this.ingresoDatos.boton == 'Editar') {
+    //  this.tioEdit(this.ingresoDatos.code,this.miFormulario);
+    //}
 
     } else {
       this.agregarUsuario(this.ingresoDatos.code);
     }
-
-
-    /* if (this.ingresoDatos.boton == 'Guardar') {
-      //this.editarUsuario();
-    }
-    if (this.ingresoDatos.boton == "Eliminar") {
-      this.eliminarUsuario();
-    }*/
-    if (this.ingresoDatos.boton == 'Editar') {
-      this.editarUsuario(this.ingresoDatos.code,this.miFormulario);
-    } 
   }
 
   editarUsuario(code: any, usuario: Dueño) {
