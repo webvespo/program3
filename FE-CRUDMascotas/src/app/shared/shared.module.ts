@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 
@@ -55,7 +56,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ],
   exports: [
     MatTableModule,
@@ -77,7 +79,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

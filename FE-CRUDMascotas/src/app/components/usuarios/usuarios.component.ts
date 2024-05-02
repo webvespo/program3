@@ -8,14 +8,6 @@ import { Dueño } from 'src/app/interfaces/dueño';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { DialogoComponent } from '../dialogo/dialogo.component';
 
-/* export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-} */
-
-
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
@@ -37,7 +29,6 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
     this.cargarUsuarios();
   }
 
-
   cargarUsuarios() {
     this._usuarioService.getUsuarios().subscribe(data => {
       this.dataSource.data = data;
@@ -45,14 +36,10 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
       alert('Opss ocurrio un error');
     }
     )
-
-    //this.ELEMENT_DATA = this._usuarioService.getUsuario();
-    // this.dataSource = new MatTableDataSource(this.ELEMENT_DATA)
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    //this.dataSource.sort = this.sort;
     if (this.dataSource.data.length > 0) {
       this.paginator._intl.itemsPerPageLabel = 'Items por página';
     }
@@ -64,7 +51,7 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
   }
 
   editarUsuario(code: any) {
-    this.abrirDialogo(code, 'Editar Usuario','Guardar');
+    this.abrirDialogo(code, 'Editar Usuario', 'Editar');
   }
 
   agregarUsuario() {
@@ -72,10 +59,9 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
   }
 
   eliminarUsuario(code: any) {
-    this.abrirDialogo(code, 'Confirmar ELIMINAR','Eliminar');
+    this.abrirDialogo(code, 'Confirmar ELIMINAR', 'Eliminar');
   }
-  deleteUsuario(index: number) {
-    //console.log(index);
+/*   deleteUsuario(index: number) {
     this._usuarioService.deleteUsuario(index);
     this.cargarUsuarios();
 
@@ -84,10 +70,9 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     })
-  }
+  } */
 
-  abrirDialogo(code: any, title: any, boton:any) {
-    //  console.log(id);
+  abrirDialogo(code: any, title: any, boton: any) {
     var _popup = this.dialogo.open(DialogoComponent, {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '750ms',
@@ -99,7 +84,6 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
       }
     });
     _popup.afterClosed().subscribe(item => {
-      //console.log(item);
       this.cargarUsuarios();
     })
   }

@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,
+     private router: Router) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required],
@@ -49,7 +50,8 @@ export class LoginComponent implements OnInit {
   falsoloading(){
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['dashboard']);
+      //this.router.navigate(['dashboard']);
+      this.router.navigate(['/inicio']);
     }, 1500);
   }
 }

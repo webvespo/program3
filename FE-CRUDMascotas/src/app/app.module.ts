@@ -16,6 +16,10 @@ import { VerMascotaComponent } from './components/ver-mascota/ver-mascota.compon
 import { MenuComponent } from './components/menu/menu.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { DialogoComponent } from './components/dialogo/dialogo.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 
 @NgModule({
@@ -26,7 +30,11 @@ import { LoginComponent } from './components/login/login.component';
     VerMascotaComponent,
     MenuComponent,
     InicioComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent,
+    DialogoComponent,
+    ReportesComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

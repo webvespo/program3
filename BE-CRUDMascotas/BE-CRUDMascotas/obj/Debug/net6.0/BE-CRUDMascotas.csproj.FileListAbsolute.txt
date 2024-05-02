@@ -348,9 +348,12 @@ E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMa
 E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\staticwebassets.build.json
 E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\staticwebassets.development.json
 E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\scopedcss\bundle\BE-CRUDMascotas.styles.css
-E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\BE-CRUDMascotas.csproj.CopyComplete
 E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\BE-CRUDMascotas.dll
 E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\refint\BE-CRUDMascotas.dll
 E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\BE-CRUDMascotas.pdb
 E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\BE-CRUDMascotas.genruntimeconfig.cache
 E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\ref\BE-CRUDMascotas.dll
+E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\bin\Debug\net6.0\package-lock.json
+E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\bin\Debug\net6.0\package.json
+E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\BE-CRUDMascotas.sourcelink.json
+E:\Datos-usuariol\Desktop\2023\Programación3\program3\BE-CRUDMascotas\BE-CRUDMascotas\obj\Debug\net6.0\BE-CRUDM.A127FF8E.Up2Date
