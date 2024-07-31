@@ -16,6 +16,13 @@ export class UsuarioService {
     return this.http.get<Dueño[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
 
+  //get nombreUsuarios(): string[] {
+  //  return this.http.get<Dueño[]>(`${this.myAppUrl}${this.myApiUrl}`);
+  //}
+  /* getNombreUsuarios(nombreUsuario: any): Observable<Dueño> {
+    return this.http.get<Dueño>(`${this.myAppUrl}${this.myApiUrl}${nombreUsuario}`);
+  } */
+
   getUsuario(id: number): Observable<Dueño> {
     return this.http.get<Dueño>(`${this.myAppUrl}${this.myApiUrl}${id}`);
   }

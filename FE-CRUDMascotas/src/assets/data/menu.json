@@ -8,6 +8,10 @@
         "redirect": "/usuarios"
     },
     {
+        "nombre": "Mascotas",
+        "redirect": "/mascotas"
+    },
+    {
         "nombre": "Reportes",
         "redirect": "/reportes"
     }

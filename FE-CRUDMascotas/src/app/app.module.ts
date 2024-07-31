@@ -10,9 +10,6 @@ import { SharedModule } from './shared/shared.module';
 
 
 //componentes
-import { AgregarEditarMascotaComponent } from './components/agregar-editar-mascota/agregar-editar-mascota.component';
-import { ListadoMascotaComponent } from './components/listado-mascota/listado-mascota.component';
-import { VerMascotaComponent } from './components/ver-mascota/ver-mascota.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
@@ -20,21 +17,24 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DialogoComponent } from './components/dialogo/dialogo.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { MascotasComponent } from './components/mascotas/mascotas.component';
+import { DialogoMascotasComponent } from './components/dialogo-mascotas/dialogo-mascotas.component';
+import { EditarMascotasComponent } from './components/editar-mascotas/editar-mascotas.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AgregarEditarMascotaComponent,
-    ListadoMascotaComponent,
-    VerMascotaComponent,
     MenuComponent,
     InicioComponent,
     LoginComponent,
     NavbarComponent,
     DialogoComponent,
     ReportesComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    MascotasComponent,
+    DialogoMascotasComponent,
+    EditarMascotasComponent
   ],
   imports: [
     BrowserModule,

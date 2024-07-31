@@ -19,7 +19,8 @@
         <mat-form-field>
             <mat-label>Sexo: </mat-label>
                 <mat-select formControlName="sexo">
-                    <mat-option *ngFor="let val of selectSexo" [value]="val" >{{val}}
+                    <mat-option *ngFor="let val of selectSexo" [value]="val" >
+                        {{val}}
                     </mat-option>
                 </mat-select>                
             <mat-icon matSuffix>person</mat-icon>

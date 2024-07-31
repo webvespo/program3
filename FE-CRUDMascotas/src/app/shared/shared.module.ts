@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //Modulos
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -57,7 +57,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule
   ],
   exports: [
     MatTableModule,
@@ -80,7 +81,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule
   ]
 })
 export class SharedModule { }

@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Dueño } from 'src/app/interfaces/dueño';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { DialogoComponent } from '../dialogo/dialogo.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-usuarios',
@@ -17,11 +18,11 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nombreusuario', 'nombre', 'apellido', 'sexo', 'acciones'];
   dataSource = new MatTableDataSource<Dueño>();
 
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) Sort!: MatSort;
 
-  constructor(private _snackBar: MatSnackBar, private _usuarioService: UsuarioService, private dialogo: MatDialog) {
+  constructor(private _usuarioService: UsuarioService, 
+    private dialogo: MatDialog) {
     this.cargarUsuarios();
   }
 
@@ -61,16 +62,6 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
   eliminarUsuario(code: any) {
     this.abrirDialogo(code, 'Confirmar ELIMINAR', 'Eliminar');
   }
-/*   deleteUsuario(index: number) {
-    this._usuarioService.deleteUsuario(index);
-    this.cargarUsuarios();
-
-    this._snackBar.open('Usuario eliminado correctamente.', '', {
-      duration: 1500,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    })
-  } */
 
   abrirDialogo(code: any, title: any, boton: any) {
     var _popup = this.dialogo.open(DialogoComponent, {

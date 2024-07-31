@@ -63,7 +63,6 @@ export class DialogoComponent implements OnInit {
   public miFormulario = this.buildr.group({
 
     nombreUsuario: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    //nombreUsuario: [this.buildr.control(''), Validators.required],
     nombre: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     apellido: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     sexo: [this.buildr.control(''), Validators.required],

@@ -1,12 +1,18 @@
 table {
     width: 100%;
+    margin-top: 5px;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
-}
+  }
 
+ 
 td, th {
     width: 15%;
 }
@@ -18,11 +24,12 @@ td, th {
 
 .edit {
     cursor: pointer;
-    color: #1878b0
+    color: #17d510
 }
 
 .search {
     cursor: pointer;
+    color: #1878b0;
 }
 
 .agregar {

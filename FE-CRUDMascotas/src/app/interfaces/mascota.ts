@@ -1,15 +1,17 @@
-import { Usuario } from './Usuario';
 import { Raza } from './Raza';
+import { Dueño } from './dueño';
 export interface Mascota {
   id: number;
   nombre: string;
-  //raza: string;
   color: string;
   edad: number;
   peso: number;
   fechaCreacion?: Date;
   usuarioId: number;
-  usuario: Usuario;
+  usuario: Dueño;
+  //nombreUsuario: Dueño;
+ // usuarioId: number;
+ // usuario: Usuario;
   razaId: number;
   raza: Raza;
 }
