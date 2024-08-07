@@ -28,12 +28,12 @@ export class DialogoMascotasComponent implements OnInit {
     private buildr: FormBuilder,
     private _service: MascotaService,
     private _usuarioService: UsuarioService
-    ) { }
-    
+  ) { }
+
 
   ngOnInit(): void {
-    this._usuarioService.getUsuarios().subscribe((combo:any)=>{
-      this.comboUsuariosList=combo;
+    this._usuarioService.getUsuarios().subscribe((combo: any) => {
+      this.comboUsuariosList = combo;
     })
     this.ingresoDatos = this.data;
     if (this.ingresoDatos.code > 0) {
@@ -44,7 +44,7 @@ export class DialogoMascotasComponent implements OnInit {
     }
   }
 
-   configDialogoData(code: any) {
+  configDialogoData(code: any) {
     this._service.getMascota(code).subscribe(item => {
       this.editarData = item;
       this.miFormulario.setValue({
@@ -60,31 +60,16 @@ export class DialogoMascotasComponent implements OnInit {
           nombre: this.editarData.nombreUsuario.nombre,
           apellido: this.editarData.nombreUsuario.apellido,
           sexo: this.editarData.nombreUsuario.sexo
-          },   
+        },
         //usuario: this.editarData.nombreUsuario.nombreUsuario,
         razaId: this.editarData.raza.id,
         raza: this.editarData.raza.nombre
       })
     })
-  } 
-    /*configDialogoData(code: any) {
-      this._service.getMascota(code).subscribe(item => {
-        this.editarData = item;
-        this.miFormulario.setValue({
-          nombre: this.editarData.nombre,
-          color: this.editarData.color,
-          edad: this.editarData.edad,
-          peso: this.editarData.peso,
-          fechaCreacion: this.editarData.fechaCreacion,
-          usuarioId: this.editarData.nombreUsuario.id,
-          usuario: this.editarData.nombreUsuario.nombre, // Use nombreUsuario.nombre
-          razaId: this.editarData.raza.id,
-          raza: this.editarData.raza.nombre // Use raza.nombre
-        });
-      });
-    }*/
-    public fechaHoy = new Date();
-   configDialogoDataEmpty() {
+  }
+
+  public fechaHoy = new Date();
+  configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
       nombre: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       color: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
@@ -98,34 +83,13 @@ export class DialogoMascotasComponent implements OnInit {
         nombre: new FormControl('')!,
         apellido: new FormControl('')!,
         sexo: new FormControl('')!,
-        },   
+      },
       //usuario: new FormControl(''),
       razaId: new FormControl(''),
       raza: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')])
     })
-  } 
-    /*configDialogoDataEmpty() {
-      this.miFormulario = this.buildr.group({
-        nombreMascota: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-        color: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-        edad: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-        peso: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-        fechaCreacion: new FormControl(new Date('')), // Convert date string
-        usuarioId: new FormControl(''),
-        usuario: new FormControl({ // Nested form group for nombreUsuario
-          id: new FormControl(''),
-          nombreUsuario: new FormControl(''),
-          nombre: new FormControl(''),
-          apellido: new FormControl(''),
-          sexo: new FormControl('')
-        }),
-        razaId: new FormControl(''),
-        raza: new FormControl({ // Nested form group for raza
-          id: new FormControl(''),
-          nombre: new FormControl('')
-        })
-      });
-    }*/
+  }
+
   cerrarDialogo() { this.ref.close(); }
 
   public miFormulario = this.buildr.group({
@@ -141,8 +105,7 @@ export class DialogoMascotasComponent implements OnInit {
       nombre: new FormControl('')!,
       apellido: new FormControl('')!,
       sexo: new FormControl('')!,
-      },   
-    //usuario: new FormControl('')!,
+    },
     razaId: new FormControl('')!,
     raza: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
   });
@@ -150,10 +113,6 @@ export class DialogoMascotasComponent implements OnInit {
   public get formMiFormulario(): any {
     return this.miFormulario.value;
   }
-
-/*   public get comboUsuario(): any {
-    return this.miFormulario.value.nombreUsuario;
-  } */
 
   guardarCambios() {
     if (this.id != 0) {
@@ -167,27 +126,19 @@ export class DialogoMascotasComponent implements OnInit {
         edad: this.formMiFormulario.edad,
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
-        //fechaCreacion: this.formMiFormulario.fechaCreacion,
-        //usuarioId: this.formMiFormulario.nombreUsuario.id!,
-        //usuarioId: this.formMiFormulario.usuarioId!,
-        //usuarioId: this.formMiFormulario.usuario.id,
-        //usuarioId: this.usuarioIdCombo,
-        usuarioId:0,
-          usuario: {
+        usuarioId: 0,
+        usuario: {
           id: this.formMiFormulario.usuario.id,
           nombreUsuario: this.formMiFormulario.usuario.nombreUsuario,
           nombre: this.formMiFormulario.usuario.nombre,
           apellido: this.formMiFormulario.usuario.apellido,
           sexo: this.formMiFormulario.usuario.sexo
-          },   
-        //usuario: this.selectComboUsuario.nombreUsuario,
-        //usuario: this.formMiFormulario.usuario.id!,
-        razaId:0,
-          raza: {
-            id: this.formMiFormulario.raza.id,
-            nombre: this.formMiFormulario.raza.nombre
-          }
-        //raza: this.formMiFormulario.raza
+        },
+        razaId: 0,
+        raza: {
+          id: this.formMiFormulario.raza.id,
+          nombre: this.formMiFormulario.raza.nombre
+        }
       };
 
       const creaNuevaMascota: Mascota = {
@@ -197,27 +148,19 @@ export class DialogoMascotasComponent implements OnInit {
         edad: this.formMiFormulario.edad,
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
-        //fechaCreacion: this.formMiFormulario.fechaCreacion,
-        //usuarioId: this.formMiFormulario.nombreUsuario.id!,
-        //usuarioId: this.formMiFormulario.usuarioId!,
-        //usuarioId: this.formMiFormulario.usuario.id,
-        //usuarioId: this.usuarioIdCombo,
-        usuarioId:0,
-          usuario: {
+        usuarioId: 0,
+        usuario: {
           id: this.formMiFormulario.usuario.id,
           nombreUsuario: this.formMiFormulario.usuario.nombreUsuario,
           nombre: this.formMiFormulario.usuario.nombre,
           apellido: this.formMiFormulario.usuario.apellido,
           sexo: this.formMiFormulario.usuario.sexo
-          },   
-        //usuario: this.selectComboUsuario.nombreUsuario,
-        //usuario: this.formMiFormulario.usuario.id!,
-        razaId:0,
-          raza: {
-            id: this.formMiFormulario.raza.id,
-            nombre: this.formMiFormulario.raza.nombre
-          }
-        //raza: this.formMiFormulario.raza
+        },
+        razaId: 0,
+        raza: {
+          id: this.formMiFormulario.raza.id,
+          nombre: this.formMiFormulario.raza.nombre
+        }
       };
 
 
@@ -232,10 +175,10 @@ export class DialogoMascotasComponent implements OnInit {
   }
 
 
-  editarMascota(id: number, editaDatosMascota: Mascota) {
-    console.log(editaDatosMascota.usuario.id);
-    this._service.updateMascota(id, editaDatosMascota).subscribe(() => {
+  editarMascota(code: any, editaDatosMascota: Mascota) {
+    this._service.updateMascota(code, editaDatosMascota).subscribe(() => {
       this.cerrarDialogo();
+      console.log(code);
     })
   }
 
@@ -251,5 +194,5 @@ export class DialogoMascotasComponent implements OnInit {
     })
   }
 
-  
+
 }
