@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Dueño } from 'src/app/interfaces/dueño';
+import { Propietario } from 'src/app/interfaces/propietario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -77,7 +77,7 @@ export class DialogoComponent implements OnInit {
       if (this.ingresoDatos.boton == "Eliminar") {
         this.eliminarUsuario();
       }
-      const editaDatosPersona: Dueño = {
+      const editaDatosPersona: Propietario = {
         id: 0,
         nombreUsuario: this.formMiFormulario.nombreUsuario!,
         nombre: this.formMiFormulario.nombre!,
@@ -97,13 +97,13 @@ export class DialogoComponent implements OnInit {
   }
 
 
-editarUsuario2(code: number, usuario: Dueño) {
+editarUsuario2(code: number, usuario: Propietario) {
   this._service.EditarUsuario(code, usuario).subscribe(() => {
     this.cerrarDialogo();
   })
 }
 
-agregarUsuario(usuario: Dueño) {
+agregarUsuario(usuario: Propietario) {
   this._service.addMUsuario(usuario).subscribe(data => {
     this.cerrarDialogo();
   })

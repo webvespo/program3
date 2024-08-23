@@ -3,7 +3,7 @@
 namespace BE_CRUDMascotas.Models.DTO
 
 {
-	public class DueñoDto
+	public class PropietarioDto
 	{
 		public int Id { get; set; }
 		public string NombreUsuario { get; set;}

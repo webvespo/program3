@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Dueño } from 'src/app/interfaces/dueño';
+import { Propietario } from 'src/app/interfaces/propietario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { DialogoComponent } from '../dialogo/dialogo.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -16,7 +16,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 })
 export class UsuariosComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nombreusuario', 'nombre', 'apellido', 'sexo', 'acciones'];
-  dataSource = new MatTableDataSource<Dueño>();
+  dataSource = new MatTableDataSource<Propietario>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) Sort!: MatSort;

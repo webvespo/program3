@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Dueño } from '../interfaces/dueño';
+import { Propietario } from '../interfaces/propietario';
 
 @Injectable({
   providedIn: 'root'
@@ -12,31 +12,31 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  getUsuarios(): Observable<Dueño[]> {
-    return this.http.get<Dueño[]>(`${this.myAppUrl}${this.myApiUrl}`);
+  getUsuarios(): Observable<Propietario[]> {
+    return this.http.get<Propietario[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
 
   //get nombreUsuarios(): string[] {
-  //  return this.http.get<Dueño[]>(`${this.myAppUrl}${this.myApiUrl}`);
+  //  return this.http.get<Propietario[]>(`${this.myAppUrl}${this.myApiUrl}`);
   //}
-  /* getNombreUsuarios(nombreUsuario: any): Observable<Dueño> {
-    return this.http.get<Dueño>(`${this.myAppUrl}${this.myApiUrl}${nombreUsuario}`);
+  /* getNombreUsuarios(nombreUsuario: any): Observable<Propietario> {
+    return this.http.get<Propietario>(`${this.myAppUrl}${this.myApiUrl}${nombreUsuario}`);
   } */
 
-  getUsuario(id: number): Observable<Dueño> {
-    return this.http.get<Dueño>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  getUsuario(id: number): Observable<Propietario> {
+    return this.http.get<Propietario>(`${this.myAppUrl}${this.myApiUrl}${id}`);
   }
   deleteUsuario(id: number): Observable<void> {
     return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`);
   }
-  addMUsuario(usuario: Dueño): Observable<Dueño> {
-    return this.http.post<Dueño>(`${this.myAppUrl}${this.myApiUrl}`, usuario);
+  addMUsuario(usuario: Propietario): Observable<Propietario> {
+    return this.http.post<Propietario>(`${this.myAppUrl}${this.myApiUrl}`, usuario);
   }
-  updateUsuario(id: number, usuario: Dueño): Observable<void> {
+  updateUsuario(id: number, usuario: Propietario): Observable<void> {
     return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, usuario);
   }
 
-  EditarUsuario(code: number, usuario: Dueño): Observable<void> {
+  EditarUsuario(code: number, usuario: Propietario): Observable<void> {
     return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${code}`, usuario);
   }
 

@@ -1,4 +1,4 @@
-export interface Dueño {
+export interface Propietario {
     id: number;
     nombreUsuario: string;
     nombre: string;

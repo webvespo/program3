@@ -16,7 +16,7 @@ import { EditarMascotasComponent } from '../editar-mascotas/editar-mascotas.comp
   styleUrls: ['./mascotas.component.css']
 })
 export class MascotasComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['nombre','edad','Raza','color','peso','Dueño','acciones'];
+  displayedColumns: string[] = ['nombre','edad','Raza','color','peso','Propietario','acciones'];
   dataSource = new MatTableDataSource<Mascota>();
 
 

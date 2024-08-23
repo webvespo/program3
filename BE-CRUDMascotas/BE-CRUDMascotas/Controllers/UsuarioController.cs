@@ -27,7 +27,7 @@ namespace BE_CRUDUsuario.Controllers
             {
                 var listUsuarios = await _usuarioRepository.GetList();
 
-                var listUsuarioDto = _mapper.Map<IEnumerable<DueñoDto>>(listUsuarios);
+                var listUsuarioDto = _mapper.Map<IEnumerable<PropietarioDto>>(listUsuarios);
 
                 return Ok(listUsuarioDto);
             }
@@ -50,7 +50,7 @@ namespace BE_CRUDUsuario.Controllers
                     return NotFound();
                 }
 
-                var usuarioDto = _mapper.Map<DueñoDto>(usuario);
+                var usuarioDto = _mapper.Map<PropietarioDto>(usuario);
 
                 return Ok(usuarioDto);
 
@@ -86,7 +86,7 @@ namespace BE_CRUDUsuario.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(DueñoDto usuarioDto)
+        public async Task<IActionResult> Post(PropietarioDto usuarioDto)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace BE_CRUDUsuario.Controllers
 
                 usuario = await _usuarioRepository.Add(usuario);
 
-                var usuarioItemDto = _mapper.Map<DueñoDto>(usuario);
+                var usuarioItemDto = _mapper.Map<PropietarioDto>(usuario);
 
                 return CreatedAtAction("Get", new { id = usuarioItemDto.Id }, usuarioItemDto);
 
@@ -108,7 +108,7 @@ namespace BE_CRUDUsuario.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, DueñoDto usuarioDto)
+        public async Task<IActionResult> Put(int id, PropietarioDto usuarioDto)
         {
             try
             {

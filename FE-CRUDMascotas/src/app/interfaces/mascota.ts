@@ -1,5 +1,5 @@
 import { Raza } from './Raza';
-import { Dueño } from './dueño';
+import { Propietario } from './propietario';
 export interface Mascota {
   id: number;
   nombre: string;
@@ -8,8 +8,8 @@ export interface Mascota {
   peso: number;
   fechaCreacion?: Date;
   usuarioId: number;
-  usuario: Dueño;
-  //nombreUsuario: Dueño;
+  usuario: Propietario;
+  //nombreUsuario: Propietario;
  // usuarioId: number;
  // usuario: Usuario;
   razaId: number;
