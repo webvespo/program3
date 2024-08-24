@@ -24,11 +24,8 @@
 
         <mat-form-field>
             <mat-label>Propietario: </mat-label>
-            <mat-select>
-                <mat-option>
-                    {{miFormulario.value.usuario?.nombreUsuario}}
-                </mat-option>
-                <mat-option [value]="miFormulario.value.usuario?.nombreUsuario" *ngFor="let listarUsuarios of comboUsuariosList">
+            <mat-select [(value)]="miFormulario.value.usuario" formControlName="nombreUsuario">
+                <mat-option *ngFor="let listarUsuarios of comboUsuariosList" [value]="listarUsuarios.nombreUsuario" >
                     {{listarUsuarios.nombreUsuario}}
                 </mat-option>
             </mat-select>

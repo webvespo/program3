@@ -61,7 +61,6 @@ export class DialogoMascotasComponent implements OnInit {
           apellido: this.editarData.nombreUsuario.apellido,
           sexo: this.editarData.nombreUsuario.sexo
         },
-        //usuario: this.editarData.nombreUsuario.nombreUsuario,
         razaId: this.editarData.raza.id,
         raza: this.editarData.raza.nombre
       })
@@ -84,7 +83,6 @@ export class DialogoMascotasComponent implements OnInit {
         apellido: new FormControl('')!,
         sexo: new FormControl('')!,
       },
-      //usuario: new FormControl(''),
       razaId: new FormControl(''),
       raza: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')])
     })
