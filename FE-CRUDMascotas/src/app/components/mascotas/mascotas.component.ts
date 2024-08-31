@@ -18,7 +18,7 @@ import { EditarMascotasComponent } from '../editar-mascotas/editar-mascotas.comp
 export class MascotasComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nombre','edad','Raza','color','peso','Propietario','acciones'];
   dataSource = new MatTableDataSource<Mascota>();
-
+  isEditMode = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) Sort!: MatSort;
@@ -57,6 +57,13 @@ export class MascotasComponent implements OnInit, AfterViewInit {
         )
   }
 
+  onEdit(){
+    this.isEditMode=true;
+  }
+
+  onCancel(){
+    this.isEditMode=false;
+  }
 
   editarMascota(code: any) {
     this.abrirDialogo(code, 'Editar Mascota', 'Editar');
