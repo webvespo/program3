@@ -19,6 +19,7 @@ export class MascotasComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nombre','edad','Raza','color','peso','Propietario','acciones'];
   dataSource = new MatTableDataSource<Mascota>();
   isEditMode = false;
+  currentRowIndex: number | undefined;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) Sort!: MatSort;
@@ -57,12 +58,18 @@ export class MascotasComponent implements OnInit, AfterViewInit {
         )
   }
 
-  onEdit(){
+  onEdit(index: number){
     this.isEditMode=true;
+    this.currentRowIndex = index;
   }
 
   onCancel(){
     this.isEditMode=false;
+    this.currentRowIndex = undefined;
+  }
+
+  onSave(){
+    
   }
 
   editarMascota(code: any) {
