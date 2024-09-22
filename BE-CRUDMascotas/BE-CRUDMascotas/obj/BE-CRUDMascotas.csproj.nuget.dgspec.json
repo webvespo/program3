@@ -1,27 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Datos-usuariol\\Desktop\\2023\\Programación3\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj": {}
+    "C:\\Users\\Nico\\repo\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj": {}
   },
   "projects": {
-    "E:\\Datos-usuariol\\Desktop\\2023\\Programación3\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj": {
+    "C:\\Users\\Nico\\repo\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Datos-usuariol\\Desktop\\2023\\Programación3\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
+        "projectUniqueName": "C:\\Users\\Nico\\repo\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
         "projectName": "BE-CRUDMascotas",
-        "projectPath": "E:\\Datos-usuariol\\Desktop\\2023\\Programación3\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
-        "packagesPath": "C:\\Users\\vespo.daniel\\.nuget\\packages\\",
-        "outputPath": "E:\\Datos-usuariol\\Desktop\\2023\\Programación3\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\obj\\",
+        "projectPath": "C:\\Users\\Nico\\repo\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
+        "packagesPath": "C:\\Users\\Nico\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nico\\repo\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vespo.daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Nico\\repo\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\NuGet.Config",
+          "C:\\Users\\Nico\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,11 +33,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -74,8 +68,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -87,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
