@@ -24,7 +24,7 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
   constructor(private _usuarioService: UsuarioService,
     private dialogo: MatDialog) {
     // Si dejas esta linea en el constructor y en ngOnInit, te trae dos veces los datos
-    // si queres ver las llamadas, entrá a network (F12) y fijate que hay dos llamadas a Usuario/
+    // si queres ver las llamadas, descomentá la linea, entrá a network (F12) y fijate que hay dos llamadas a Usuario/
     // this.cargarUsuarios();
   }
 

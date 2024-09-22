@@ -54,7 +54,7 @@ CREATE TABLE [dbo].[Mascotas](
     [Nombre] [nvarchar](max) NOT NULL,
     [Color] [nvarchar](max) NOT NULL,
     [Edad] [int] NOT NULL,
-    [Peso] [float] NOT NULL,
+    [Peso] [real] NOT NULL,
     [FechaCreacion] [datetime2](7) NOT NULL,
     [UsuarioId] [int] NOT NULL,
     [RazaId] [int] NOT NULL,
