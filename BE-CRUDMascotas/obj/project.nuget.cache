@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mGppC+M9nkPMP+HpjI8wEAnVyOmJ4GpG22B7hQkfGWCvyFpYzfvsH2X9FkemJVKICN/qfXJ9fMP5kCi+Zr4yWA==",
+  "dgSpecHash": "Y4VUiI/IUKR4zdCaxDgu8A0TQi3IFbDaeMwJaWoMr/FyNCsgz0WCNo9ydp8g7tqCJHbxaaW+GmO8bspt786ZUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nico\\repo\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
+  "projectFilePath": "C:\\Users\\Nico\\repo\\program3\\BE-CRUDMascotas\\BE-CRUDMascotas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nico\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Nico\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
