@@ -37,8 +37,7 @@ export class DialogoMascotasComponent implements OnInit {
     this.ingresoDatos = this.data;
     if (this.ingresoDatos.code > 0) {
       this.configDialogoData(this.ingresoDatos.code);
-    }
-    else {
+    } else {
       this.configDialogoDataEmpty();
     }
   }
@@ -54,13 +53,6 @@ export class DialogoMascotasComponent implements OnInit {
         fechaCreacion: this.editarData.fechaCreacion,
         usuarioId: this.editarData.nombreUsuario.id,
         usuario: this.editarData.nombreUsuario.nombreUsuario,
-/*         usuario: {
-          id: this.editarData.nombreUsuario.id,
-          nombreUsuario: this.editarData.nombreUsuario.nombreUsuario,
-          nombre: this.editarData.nombreUsuario.nombre,
-          apellido: this.editarData.nombreUsuario.apellido,
-          sexo: this.editarData.nombreUsuario.sexo
-        }, */
         razaId: this.editarData.raza.id,
         raza: this.editarData.raza.nombre
       })

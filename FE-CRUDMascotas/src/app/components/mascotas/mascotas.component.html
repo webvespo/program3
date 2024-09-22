@@ -68,12 +68,9 @@
               </ng-container>
               <ng-template #notEditMode>
                 <a class="edit" matTooltip="Editar mascota">
-                  <mat-icon (click)="onEdit(i)">edit</mat-icon>
+                  <mat-icon (click)="editarMascota(element.id)">edit</mat-icon>
                 </a>
               </ng-template>
-           <!--  <a class="edit" matTooltip="Editar mascota">
-              <mat-icon (click)="editarMascota(element.id)">edit</mat-icon>
-            </a> -->
             <a class="delete" matTooltip="Eliminar mascota">
               <mat-icon (click)="eliminarMascota(element.id)">delete</mat-icon>
             </a>
@@ -85,7 +82,7 @@
           <ng-container *ngIf="isEditMode && currentRowIndex === i; else notEditMode">
           </ng-container>
           <ng-template #notEditMode>
-            
+
           </ng-template>
         </tr>
       </table>
