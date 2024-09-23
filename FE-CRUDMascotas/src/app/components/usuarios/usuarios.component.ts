@@ -23,7 +23,6 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
 
   constructor(private _usuarioService: UsuarioService, 
     private dialogo: MatDialog) {
-    this.cargarUsuarios();
   }
 
   ngOnInit(): void {

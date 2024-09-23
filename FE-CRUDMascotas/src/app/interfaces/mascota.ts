@@ -8,7 +8,7 @@ export interface Mascota {
   peso: number;
   fechaCreacion?: Date;
   usuarioId: number;
-  usuario: Propietario;
+  NombreUsuario: Propietario;
   //nombreUsuario: Propietario;
  // usuarioId: number;
  // usuario: Usuario;
