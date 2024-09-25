@@ -7,11 +7,11 @@ export interface Mascota {
   edad: number;
   peso: number;
   fechaCreacion?: Date;
-  usuarioId: number;
+  //usuarioId: number;
   NombreUsuario: Propietario;
   //nombreUsuario: Propietario;
  // usuarioId: number;
  // usuario: Usuario;
-  razaId: number;
+  //razaId: number;
   raza: Raza;
 }

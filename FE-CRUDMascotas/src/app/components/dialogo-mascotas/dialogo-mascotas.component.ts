@@ -46,7 +46,7 @@ export class DialogoMascotasComponent implements OnInit {
         edad: this.editarData.edad,
         peso: this.editarData.peso,
         fechaCreacion: this.editarData.fechaCreacion,
-        usuarioId: this.editarData.nombreUsuario.id,
+        //usuarioId: this.editarData.nombreUsuario.id,
         NombreUsuario: {
           apellido: this.editarData.nombreUsuario.apellido,
           id: this.editarData.nombreUsuario.id,
@@ -54,7 +54,7 @@ export class DialogoMascotasComponent implements OnInit {
           nombreUsuario: this.editarData.nombreUsuario.nombreUsuario,
           sexo: this.editarData.nombreUsuario.sexo
         },
-        razaId: this.editarData.raza.id,
+        //razaId: this.editarData.raza.id,
         raza: this.editarData.raza.nombre
       })
     })
@@ -68,15 +68,15 @@ export class DialogoMascotasComponent implements OnInit {
       edad: new FormControl((''), [Validators.required]),
       peso: new FormControl((''), [Validators.required]),
       fechaCreacion: new FormControl(''),
-      usuarioId: new FormControl(''),
+      //usuarioId: new FormControl(''),
       NombreUsuario:  new FormControl({
-        apellido: new FormControl(('')!, [Validators.required]),
+        apellido: new FormControl('')!,
         id: new FormControl(('')!, [Validators.required]),
         nombre: new FormControl(('')!, [Validators.required]),
         nombreUsuario: new FormControl(('')!, [Validators.required]),
         sexo: new FormControl(('')!, [Validators.required]),
       })!,
-      razaId: new FormControl(''),
+      //razaId: new FormControl(''),
       raza: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')])
     })
   }
@@ -89,7 +89,7 @@ export class DialogoMascotasComponent implements OnInit {
     edad: new FormControl(this.buildr.control(''), [Validators.required]),
     peso: new FormControl(this.buildr.control(''), [Validators.required]),
     fechaCreacion: new FormControl('')!,
-    usuarioId: [this.buildr.control(''), Validators.required],
+    //usuarioId: [this.buildr.control(''), Validators.required],
     NombreUsuario:  new FormControl({
       apellido: new FormControl('')!,
       id: new FormControl('')!,
@@ -97,7 +97,7 @@ export class DialogoMascotasComponent implements OnInit {
       nombreUsuario: new FormControl('')!,
       sexo: new FormControl('')!,
     })!,
-    razaId: new FormControl('')!,
+    //razaId: new FormControl('')!,
     raza: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
   });
 
@@ -117,15 +117,15 @@ export class DialogoMascotasComponent implements OnInit {
         edad: this.formMiFormulario.edad,
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
-        usuarioId: 0,
+        //usuarioId: ''!,
         NombreUsuario: {
-          apellido: this.formMiFormulario.usuario.apellido,
-          id: this.formMiFormulario.usuario.id,
-          nombre: this.formMiFormulario.usuario.nombre,
-          nombreUsuario: this.formMiFormulario.usuario.nombreUsuario,
-          sexo: this.formMiFormulario.usuario.sexo
+          apellido: this.formMiFormulario.NombreUsuario.apellido,
+          id: this.formMiFormulario.NombreUsuario.id,
+          nombre: this.formMiFormulario.NombreUsuario.nombre,
+          nombreUsuario: this.formMiFormulario.NombreUsuario.nombreUsuario,
+          sexo: this.formMiFormulario.NombreUsuario.sexo
         },
-        razaId: 0,
+        //razaId: 0,
         raza: {
           id: this.formMiFormulario.raza.id,
           nombre: this.formMiFormulario.raza.nombre
@@ -139,7 +139,7 @@ export class DialogoMascotasComponent implements OnInit {
         edad: this.formMiFormulario.edad,
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
-        usuarioId: 0,
+        //usuarioId: 0,
         NombreUsuario: {
           apellido: this.formMiFormulario.usuario.apellido,
           id: this.formMiFormulario.usuario.id,
@@ -147,7 +147,7 @@ export class DialogoMascotasComponent implements OnInit {
           nombreUsuario: this.formMiFormulario.usuario.nombreUsuario,
           sexo: this.formMiFormulario.usuario.sexo
         },
-        razaId: 0,
+        //razaId: 0,
         raza: {
           id: this.formMiFormulario.raza.id,
           nombre: this.formMiFormulario.raza.nombre
