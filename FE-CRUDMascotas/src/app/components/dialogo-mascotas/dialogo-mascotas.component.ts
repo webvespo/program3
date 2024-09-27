@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Mascota } from 'src/app/interfaces/mascota';
 import { MascotaService } from 'src/app/services/mascota.service';
@@ -22,7 +22,7 @@ export class DialogoMascotasComponent implements OnInit {
     private buildr: FormBuilder,
     private _service: MascotaService,
     private _usuarioService: UsuarioService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._usuarioService.getUsuarios().subscribe((combo: any) => {
@@ -46,7 +46,6 @@ export class DialogoMascotasComponent implements OnInit {
         edad: this.editarData.edad,
         peso: this.editarData.peso,
         fechaCreacion: this.editarData.fechaCreacion,
-        //usuarioId: this.editarData.nombreUsuario.id,
         NombreUsuario: {
           apellido: this.editarData.nombreUsuario.apellido,
           id: this.editarData.nombreUsuario.id,
@@ -54,7 +53,6 @@ export class DialogoMascotasComponent implements OnInit {
           nombreUsuario: this.editarData.nombreUsuario.nombreUsuario,
           sexo: this.editarData.nombreUsuario.sexo
         },
-        //razaId: this.editarData.raza.id,
         raza: this.editarData.raza.nombre
       })
     })
@@ -68,15 +66,13 @@ export class DialogoMascotasComponent implements OnInit {
       edad: new FormControl((''), [Validators.required]),
       peso: new FormControl((''), [Validators.required]),
       fechaCreacion: new FormControl(''),
-      //usuarioId: new FormControl(''),
       NombreUsuario:  new FormControl({
         apellido: new FormControl('')!,
-        id: new FormControl(('')!, [Validators.required]),
-        nombre: new FormControl(('')!, [Validators.required]),
-        nombreUsuario: new FormControl(('')!, [Validators.required]),
-        sexo: new FormControl(('')!, [Validators.required]),
+        id: new FormControl('')!,
+        nombre: new FormControl('')!,
+        nombreUsuario: new FormControl('')!,
+        sexo: new FormControl('')!,
       })!,
-      //razaId: new FormControl(''),
       raza: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')])
     })
   }
@@ -89,7 +85,6 @@ export class DialogoMascotasComponent implements OnInit {
     edad: new FormControl(this.buildr.control(''), [Validators.required]),
     peso: new FormControl(this.buildr.control(''), [Validators.required]),
     fechaCreacion: new FormControl('')!,
-    //usuarioId: [this.buildr.control(''), Validators.required],
     NombreUsuario:  new FormControl({
       apellido: new FormControl('')!,
       id: new FormControl('')!,
@@ -97,7 +92,6 @@ export class DialogoMascotasComponent implements OnInit {
       nombreUsuario: new FormControl('')!,
       sexo: new FormControl('')!,
     })!,
-    //razaId: new FormControl('')!,
     raza: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
   });
 
@@ -110,6 +104,7 @@ export class DialogoMascotasComponent implements OnInit {
       if (this.ingresoDatos.boton == "Eliminar") {
         this.eliminarMascota();
       }
+
       const editaDatosMascota: Mascota = {
         id: 0,
         nombre: this.formMiFormulario.nombre,
@@ -117,7 +112,6 @@ export class DialogoMascotasComponent implements OnInit {
         edad: this.formMiFormulario.edad,
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
-        //usuarioId: ''!,
         NombreUsuario: {
           apellido: this.formMiFormulario.NombreUsuario.apellido,
           id: this.formMiFormulario.NombreUsuario.id,
@@ -125,7 +119,6 @@ export class DialogoMascotasComponent implements OnInit {
           nombreUsuario: this.formMiFormulario.NombreUsuario.nombreUsuario,
           sexo: this.formMiFormulario.NombreUsuario.sexo
         },
-        //razaId: 0,
         raza: {
           id: this.formMiFormulario.raza.id,
           nombre: this.formMiFormulario.raza.nombre
@@ -139,15 +132,14 @@ export class DialogoMascotasComponent implements OnInit {
         edad: this.formMiFormulario.edad,
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
-        //usuarioId: 0,
         NombreUsuario: {
-          apellido: this.formMiFormulario.usuario.apellido,
+          apellido: this.formMiFormulario.NombreUsuario.apellido,
+          //apellido: this.formMiFormulario.usuario.apellido,
           id: this.formMiFormulario.usuario.id,
           nombre: this.formMiFormulario.usuario.nombre,
           nombreUsuario: this.formMiFormulario.usuario.nombreUsuario,
           sexo: this.formMiFormulario.usuario.sexo
         },
-        //razaId: 0,
         raza: {
           id: this.formMiFormulario.raza.id,
           nombre: this.formMiFormulario.raza.nombre
@@ -156,6 +148,7 @@ export class DialogoMascotasComponent implements OnInit {
 
       if (this.ingresoDatos.boton == 'Editar') {
         editaDatosMascota.id = this.ingresoDatos.code;
+        console.log(editaDatosMascota);
         this.editarMascota(this.ingresoDatos.code, editaDatosMascota);
       }
       else {
@@ -182,6 +175,4 @@ export class DialogoMascotasComponent implements OnInit {
       this.cerrarDialogo();
     })
   }
-
-
 }
