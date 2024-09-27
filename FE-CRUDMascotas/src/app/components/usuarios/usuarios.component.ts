@@ -21,11 +21,8 @@ export class UsuariosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) Sort!: MatSort;
 
-  constructor(private _usuarioService: UsuarioService,
+  constructor(private _usuarioService: UsuarioService, 
     private dialogo: MatDialog) {
-    // Si dejas esta linea en el constructor y en ngOnInit, te trae dos veces los datos
-    // si queres ver las llamadas, descomentá la linea, entrá a network (F12) y fijate que hay dos llamadas a Usuario/
-    // this.cargarUsuarios();
   }
 
   ngOnInit(): void {
