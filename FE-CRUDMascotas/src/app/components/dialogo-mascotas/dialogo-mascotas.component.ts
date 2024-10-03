@@ -41,6 +41,7 @@ export class DialogoMascotasComponent implements OnInit {
     this._service.getMascota(code).subscribe(item => {
       this.editarData = item;
       this.miFormulario.setValue({
+        idUsuario: this.editarData.nombreUsuario.id,
         nombre: this.editarData.nombre,
         color: this.editarData.color,
         edad: this.editarData.edad,
@@ -61,6 +62,7 @@ export class DialogoMascotasComponent implements OnInit {
   public fechaHoy = new Date();
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
+      idUsuario: new FormControl(''),
       nombre: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       color: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       edad: new FormControl((''), [Validators.required]),
@@ -80,6 +82,7 @@ export class DialogoMascotasComponent implements OnInit {
   cerrarDialogo() { this.ref.close(); }
 
   public miFormulario = this.buildr.group({
+    idUsuario: new FormControl(''),
     nombre: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     color: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     edad: new FormControl(this.buildr.control(''), [Validators.required]),
@@ -98,14 +101,40 @@ export class DialogoMascotasComponent implements OnInit {
   public get formMiFormulario(): any {
     return this.miFormulario.value;
   }
+  public get usuarioSelected(): any {
+    return this.miFormulario.value.idUsuario;
+  }
 
   guardarCambios() {
     if (this.id != 0) {
       if (this.ingresoDatos.boton == "Eliminar") {
         this.eliminarMascota();
       }
+      
+      console.log(this.usuarioSelected);
 
       const editaDatosMascota: Mascota = {
+        id: this.ingresoDatos.code,
+        nombre: this.formMiFormulario.nombre,
+        color: this.formMiFormulario.color,
+        edad: this.formMiFormulario.edad,
+        peso: this.formMiFormulario.peso,
+        fechaCreacion: this.fechaHoy,
+        NombreUsuario: {
+          apellido: this.formMiFormulario.NombreUsuario.apellido,
+          id: this.usuarioSelected,
+          nombre: this.formMiFormulario.NombreUsuario.nombre,
+          nombreUsuario: this.formMiFormulario.NombreUsuario.nombreUsuario,
+          sexo: this.formMiFormulario.NombreUsuario.sexo
+        },
+
+        raza: {
+          id: this.formMiFormulario.raza.id,
+          nombre: this.formMiFormulario.raza
+        }
+      };
+
+      const creaNuevaMascota: Mascota = {
         id: 0,
         nombre: this.formMiFormulario.nombre,
         color: this.formMiFormulario.color,
@@ -121,37 +150,13 @@ export class DialogoMascotasComponent implements OnInit {
         },
         raza: {
           id: this.formMiFormulario.raza.id,
-          nombre: this.formMiFormulario.raza.nombre
-        }
-      };
-
-      const creaNuevaMascota: Mascota = {
-        id: 0,
-        nombre: this.formMiFormulario.nombre,
-        color: this.formMiFormulario.color,
-        edad: this.formMiFormulario.edad,
-        peso: this.formMiFormulario.peso,
-        fechaCreacion: this.fechaHoy,
-        NombreUsuario: {
-          apellido: this.formMiFormulario.NombreUsuario.apellido,
-          //apellido: this.formMiFormulario.usuario.apellido,
-          id: this.formMiFormulario.usuario.id,
-          nombre: this.formMiFormulario.usuario.nombre,
-          nombreUsuario: this.formMiFormulario.usuario.nombreUsuario,
-          sexo: this.formMiFormulario.usuario.sexo
-        },
-        raza: {
-          id: this.formMiFormulario.raza.id,
-          nombre: this.formMiFormulario.raza.nombre
+          nombre: this.formMiFormulario.raza
         }
       };
 
       if (this.ingresoDatos.boton == 'Editar') {
-        editaDatosMascota.id = this.ingresoDatos.code;
-        console.log(editaDatosMascota);
         this.editarMascota(this.ingresoDatos.code, editaDatosMascota);
-      }
-      else {
+      } else {
         this.agregarMascota(creaNuevaMascota);
       }
     }
@@ -160,7 +165,6 @@ export class DialogoMascotasComponent implements OnInit {
   editarMascota(code: any, editaDatosMascota: Mascota) {
     this._service.updateMascota(code, editaDatosMascota).subscribe(() => {
       this.cerrarDialogo();
-      console.log(code);
     })
   }
 
