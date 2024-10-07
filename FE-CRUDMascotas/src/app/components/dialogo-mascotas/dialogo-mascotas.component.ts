@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Mascota } from 'src/app/interfaces/mascota';
 import { MascotaService } from 'src/app/services/mascota.service';
 import { UsuarioService } from '../../services/usuario.service';
+import { Raza } from 'src/app/interfaces/Raza';
 
 @Component({
   selector: 'app-dialogo-mascotas',
@@ -16,6 +17,13 @@ export class DialogoMascotasComponent implements OnInit {
   id: any;
   usuarioIdCombo: any;
   comboUsuariosList: any;
+  razaList: Raza[] = [
+    {id: 1, nombre: 'Pitbull'},
+    {id: 2, nombre: 'Ovejero Alemán'},
+    {id: 3, nombre: 'Golden'},
+    {id: 4, nombre: 'Salchicha'},
+    {id: 5, nombre: 'Caniche'},
+  ]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private ref: MatDialogRef<DialogoMascotasComponent>,
@@ -24,10 +32,15 @@ export class DialogoMascotasComponent implements OnInit {
     private _usuarioService: UsuarioService
   ) {}
 
+
+
   ngOnInit(): void {
     this._usuarioService.getUsuarios().subscribe((combo: any) => {
       this.comboUsuariosList = combo;
     })
+ 
+    
+
     this.ingresoDatos = this.data;
     if (this.ingresoDatos.code > 0) {
       this.configDialogoData(this.ingresoDatos.code);
@@ -63,8 +76,8 @@ export class DialogoMascotasComponent implements OnInit {
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
       idUsuario: new FormControl(''),
-      nombre: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      color: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      nombre: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+      color: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
       edad: new FormControl((''), [Validators.required]),
       peso: new FormControl((''), [Validators.required]),
       fechaCreacion: new FormControl(''),

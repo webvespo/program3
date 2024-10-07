@@ -33,7 +33,11 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Raza: </mat-label>
-            <input formControlName="raza" matInput>
+            <mat-select formControlName="raza">
+                <mat-option *ngFor="let listarRazas of razaList" [value]="listarRazas.id">
+                    {{listarRazas.nombre}}
+                </mat-option>
+            </mat-select>
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
     </div>
