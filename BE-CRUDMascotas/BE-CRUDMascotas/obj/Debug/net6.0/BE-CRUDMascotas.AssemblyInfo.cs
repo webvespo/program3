@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BE-CRUDMascotas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0acaf8d64130ca8f765b7f51a7cf258d2077c8b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5613059286ce4cb6f09d93fbee3b8033e3025e38")]
 [assembly: System.Reflection.AssemblyProductAttribute("BE-CRUDMascotas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BE-CRUDMascotas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

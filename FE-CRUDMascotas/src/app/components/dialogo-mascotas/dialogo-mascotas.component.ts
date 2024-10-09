@@ -23,6 +23,7 @@ export class DialogoMascotasComponent implements OnInit {
     {id: 3, nombre: 'Golden'},
     {id: 4, nombre: 'Salchicha'},
     {id: 5, nombre: 'Caniche'},
+    {id: 8, nombre: 'null'},
   ]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -55,6 +56,7 @@ export class DialogoMascotasComponent implements OnInit {
       this.editarData = item;
       this.miFormulario.setValue({
         idUsuario: this.editarData.nombreUsuario.id,
+        idRaza: this.editarData.raza.id,
         nombre: this.editarData.nombre,
         color: this.editarData.color,
         edad: this.editarData.edad,
@@ -67,7 +69,10 @@ export class DialogoMascotasComponent implements OnInit {
           nombreUsuario: this.editarData.nombreUsuario.nombreUsuario,
           sexo: this.editarData.nombreUsuario.sexo
         },
-        raza: this.editarData.raza.nombre
+        raza: {
+          id: this.editarData.raza.id,
+          nombre: this.editarData.raza.nombre
+        }
       })
     })
   }
@@ -76,6 +81,7 @@ export class DialogoMascotasComponent implements OnInit {
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
       idUsuario: new FormControl(''),
+      idRaza: new FormControl(''),
       nombre: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
       color: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
       edad: new FormControl((''), [Validators.required]),
@@ -88,7 +94,10 @@ export class DialogoMascotasComponent implements OnInit {
         nombreUsuario: new FormControl('')!,
         sexo: new FormControl('')!,
       })!,
-      raza: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')])
+      raza: new FormControl({
+        id: new FormControl('')!,
+        nombre: new FormControl('')!,
+      })
     })
   }
 
@@ -96,6 +105,7 @@ export class DialogoMascotasComponent implements OnInit {
 
   public miFormulario = this.buildr.group({
     idUsuario: new FormControl(''),
+    idRaza: new FormControl(''),
     nombre: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     color: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     edad: new FormControl(this.buildr.control(''), [Validators.required]),
@@ -108,7 +118,11 @@ export class DialogoMascotasComponent implements OnInit {
       nombreUsuario: new FormControl('')!,
       sexo: new FormControl('')!,
     })!,
-    raza: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+    raza: new FormControl({
+      id: new FormControl('')!,
+      nombre: new FormControl('')!,
+    })
+    //raza: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
   });
 
   public get formMiFormulario(): any {
@@ -117,15 +131,15 @@ export class DialogoMascotasComponent implements OnInit {
   public get usuarioSelected(): any {
     return this.miFormulario.value.idUsuario;
   }
+  public get razaSelected(): any {
+    return this.miFormulario.value.idRaza;
+  }
 
   guardarCambios() {
     if (this.id != 0) {
       if (this.ingresoDatos.boton == "Eliminar") {
         this.eliminarMascota();
       }
-      
-      console.log(this.usuarioSelected);
-
       const editaDatosMascota: Mascota = {
         id: this.ingresoDatos.code,
         nombre: this.formMiFormulario.nombre,
@@ -140,10 +154,9 @@ export class DialogoMascotasComponent implements OnInit {
           nombreUsuario: this.formMiFormulario.NombreUsuario.nombreUsuario,
           sexo: this.formMiFormulario.NombreUsuario.sexo
         },
-
         raza: {
-          id: this.formMiFormulario.raza.id,
-          nombre: this.formMiFormulario.raza
+          id: this.razaSelected,
+          nombre: this.formMiFormulario.raza.nombre
         }
       };
 
@@ -163,7 +176,7 @@ export class DialogoMascotasComponent implements OnInit {
         },
         raza: {
           id: this.formMiFormulario.raza.id,
-          nombre: this.formMiFormulario.raza
+          nombre: this.formMiFormulario.raza.nombre
         }
       };
 
