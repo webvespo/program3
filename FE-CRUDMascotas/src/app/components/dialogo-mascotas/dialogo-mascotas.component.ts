@@ -18,12 +18,11 @@ export class DialogoMascotasComponent implements OnInit {
   usuarioIdCombo: any;
   comboUsuariosList: any;
   razaList: Raza[] = [
-    {id: 1, nombre: 'Pitbull'},
-    {id: 2, nombre: 'Ovejero Alemán'},
-    {id: 3, nombre: 'Golden'},
-    {id: 4, nombre: 'Salchicha'},
-    {id: 5, nombre: 'Caniche'},
-    {id: 8, nombre: 'null'},
+    { id: 1, nombre: 'Pitbull' },
+    { id: 2, nombre: 'Ovejero Alemán' },
+    { id: 3, nombre: 'Golden' },
+    { id: 4, nombre: 'Salchicha' },
+    { id: 5, nombre: 'Caniche' },
   ]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -31,7 +30,7 @@ export class DialogoMascotasComponent implements OnInit {
     private buildr: FormBuilder,
     private _service: MascotaService,
     private _usuarioService: UsuarioService
-  ) {}
+  ) { }
 
 
 
@@ -39,8 +38,6 @@ export class DialogoMascotasComponent implements OnInit {
     this._usuarioService.getUsuarios().subscribe((combo: any) => {
       this.comboUsuariosList = combo;
     })
- 
-    
 
     this.ingresoDatos = this.data;
     if (this.ingresoDatos.code > 0) {
@@ -87,7 +84,7 @@ export class DialogoMascotasComponent implements OnInit {
       edad: new FormControl((''), [Validators.required]),
       peso: new FormControl((''), [Validators.required]),
       fechaCreacion: new FormControl(''),
-      NombreUsuario:  new FormControl({
+      NombreUsuario: new FormControl({
         apellido: new FormControl('')!,
         id: new FormControl('')!,
         nombre: new FormControl('')!,
@@ -111,7 +108,7 @@ export class DialogoMascotasComponent implements OnInit {
     edad: new FormControl(this.buildr.control(''), [Validators.required]),
     peso: new FormControl(this.buildr.control(''), [Validators.required]),
     fechaCreacion: new FormControl('')!,
-    NombreUsuario:  new FormControl({
+    NombreUsuario: new FormControl({
       apellido: new FormControl('')!,
       id: new FormControl('')!,
       nombre: new FormControl('')!,
@@ -122,7 +119,6 @@ export class DialogoMascotasComponent implements OnInit {
       id: new FormControl('')!,
       nombre: new FormControl('')!,
     })
-    //raza: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
   });
 
   public get formMiFormulario(): any {
@@ -175,7 +171,7 @@ export class DialogoMascotasComponent implements OnInit {
           sexo: this.formMiFormulario.NombreUsuario.sexo
         },
         raza: {
-          id: this.formMiFormulario.raza.id,
+          id: this.razaSelected,
           nombre: this.formMiFormulario.raza.nombre
         }
       };
