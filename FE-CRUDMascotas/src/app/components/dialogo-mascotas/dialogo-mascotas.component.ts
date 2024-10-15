@@ -133,14 +133,24 @@ export class DialogoMascotasComponent implements OnInit {
     return razaSeleccionada ? razaSeleccionada.nombre : '';
   }
 
-  obtenerDatosUsuarioPorId(idUsuario: any) {
-    this._usuarioService.obtenerUsuarioPorID(this.formMiFormulario.idUsuario).subscribe(item => {
-      this.datosPropietario = item;
-    })
+  obtenerNombrePropietarioPorId(){
+    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
+    return nombreSeleccionado ? nombreSeleccionado.nombre : '';
   }
 
-
-
+  obtenerNombreUsuarioPorId(){
+    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
+    return nombreSeleccionado ? nombreSeleccionado.nombreUsuario : '';
+  }
+  
+  obtenerApellidoUsuarioPorId(){
+    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
+    return nombreSeleccionado ? nombreSeleccionado.apellido : '';
+  }
+  obtenerSexoUsuarioPorId(){
+    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
+    return nombreSeleccionado ? nombreSeleccionado.sexo : '';
+  }
   guardarCambios() {
     if (this.id != 0) {
       if (this.ingresoDatos.boton == "Eliminar") {
@@ -174,11 +184,11 @@ export class DialogoMascotasComponent implements OnInit {
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
         NombreUsuario: {
-          apellido: this.formMiFormulario.NombreUsuario.apellido,
-          id: this.formMiFormulario.NombreUsuario.id,
-          nombre: this.formMiFormulario.NombreUsuario.nombre,
-          nombreUsuario: this.formMiFormulario.NombreUsuario.nombreUsuario,
-          sexo: this.formMiFormulario.NombreUsuario.sexo
+          apellido: this.obtenerApellidoUsuarioPorId(),
+          id: this.formMiFormulario.idUsuario,
+          nombre: this.obtenerNombrePropietarioPorId(),
+          nombreUsuario: this.obtenerNombreUsuarioPorId(),
+          sexo: this.obtenerSexoUsuarioPorId()
         },
         raza: {
           id: this.formMiFormulario.idRaza,
@@ -189,6 +199,7 @@ export class DialogoMascotasComponent implements OnInit {
       if (this.ingresoDatos.boton == 'Editar') {
         this.editarMascota(this.ingresoDatos.code, editaDatosMascota);
       } else {
+        console.log(creaNuevaMascota);
         this.agregarMascota(creaNuevaMascota);
       }
     }
