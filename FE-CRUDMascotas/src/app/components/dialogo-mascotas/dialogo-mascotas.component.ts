@@ -5,6 +5,7 @@ import { Mascota } from 'src/app/interfaces/mascota';
 import { MascotaService } from 'src/app/services/mascota.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { Raza } from 'src/app/interfaces/Raza';
+import { Usuario } from 'src/app/interfaces/Usuario';
 
 @Component({
   selector: 'app-dialogo-mascotas',
@@ -17,6 +18,8 @@ export class DialogoMascotasComponent implements OnInit {
   id: any;
   usuarioIdCombo: any;
   comboUsuariosList: any;
+  razaSeleccionada: any;
+  datosPropietario: any;
   razaList: Raza[] = [
     { id: 1, nombre: 'Pitbull' },
     { id: 2, nombre: 'Ovejero Alemán' },
@@ -124,12 +127,19 @@ export class DialogoMascotasComponent implements OnInit {
   public get formMiFormulario(): any {
     return this.miFormulario.value;
   }
-  public get usuarioSelected(): any {
-    return this.miFormulario.value.idUsuario;
+
+  obtenerNombreRazaSeleccionada() {
+    const razaSeleccionada = this.razaList.find(listarRazas => listarRazas.id === this.formMiFormulario.idRaza);
+    return razaSeleccionada ? razaSeleccionada.nombre : '';
   }
-  public get razaSelected(): any {
-    return this.miFormulario.value.idRaza;
+
+  obtenerDatosUsuarioPorId(idUsuario: any) {
+    this._usuarioService.obtenerUsuarioPorID(this.formMiFormulario.idUsuario).subscribe(item => {
+      this.datosPropietario = item;
+    })
   }
+
+
 
   guardarCambios() {
     if (this.id != 0) {
@@ -145,14 +155,14 @@ export class DialogoMascotasComponent implements OnInit {
         fechaCreacion: this.fechaHoy,
         NombreUsuario: {
           apellido: this.formMiFormulario.NombreUsuario.apellido,
-          id: this.usuarioSelected,
+          id: this.formMiFormulario.idUsuario,
           nombre: this.formMiFormulario.NombreUsuario.nombre,
           nombreUsuario: this.formMiFormulario.NombreUsuario.nombreUsuario,
           sexo: this.formMiFormulario.NombreUsuario.sexo
         },
         raza: {
-          id: this.razaSelected,
-          nombre: this.formMiFormulario.raza.nombre
+          id: this.formMiFormulario.idRaza,
+          nombre: this.obtenerNombreRazaSeleccionada()
         }
       };
 
@@ -171,8 +181,8 @@ export class DialogoMascotasComponent implements OnInit {
           sexo: this.formMiFormulario.NombreUsuario.sexo
         },
         raza: {
-          id: this.razaSelected,
-          nombre: this.formMiFormulario.raza.nombre
+          id: this.formMiFormulario.idRaza,
+          nombre: this.obtenerNombreRazaSeleccionada()
         }
       };
 
