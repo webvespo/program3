@@ -30,6 +30,7 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IRepository<Mascota>, MascotaRepository>();
 builder.Services.AddScoped<IRepository<Usuario>, usuarioRepository>();
+builder.Services.AddScoped<IRazaRepository, RazaRepository>();
 
 var app = builder.Build();
 

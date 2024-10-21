@@ -35,7 +35,12 @@ namespace BE_CRUDMascotas.Repository
 
 		}
 
-		public async Task<List<Mascota>> GetList()
+        public Task<Raza> GetByNombre(string? nombre)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<List<Mascota>> GetList()
 		{
 			return await _context.Mascotas.Include(x=>x.NombreUsuario).Include(x=>x.raza).ToListAsync();
 		}

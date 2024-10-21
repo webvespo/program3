@@ -17,12 +17,15 @@ namespace BE_CRUDMascotas.Controllers
         private readonly IMapper _mapper;
         private readonly IRepository<Mascota> _mascotaRepository;
         private readonly IRepository<Usuario> _usuarioRepository;
+        private readonly IRepository<Raza> _razaRepository;
 
-        public MascotaController(IMapper mapper, IRepository<Mascota> mascotaRepository, IRepository<Usuario> usuarioRepository)
+        public MascotaController(IMapper mapper, IRepository<Mascota> mascotaRepository,
+                        IRepository<Usuario> usuarioRepository, IRazaRepository razaRepository)
         {
             _mapper = mapper;
             _mascotaRepository = mascotaRepository;
             _usuarioRepository = usuarioRepository;
+            _razaRepository = razaRepository;
         }
 
         [HttpGet]
@@ -139,7 +142,12 @@ namespace BE_CRUDMascotas.Controllers
 
                 if (mascotaItem.raza.Nombre != mascotaDto.raza.Nombre)
                 {
-                    mascotaItem.raza = new Raza { Nombre = mascotaDto.raza.Nombre };
+                    var existingRaza = await _razaRepository.GetByNombre(mascotaDto.raza.Nombre);
+                    if (existingRaza == null)
+                    {
+                        existingRaza = await _razaRepository.Add(new Raza { Nombre = mascotaDto.raza.Nombre });
+                    }
+                    mascotaItem.raza = existingRaza;
                 }
 
                 var usuario = await _usuarioRepository.GetById(mascotaDto.NombreUsuario.Id);

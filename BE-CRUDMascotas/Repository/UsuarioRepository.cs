@@ -33,6 +33,12 @@ namespace BE_CRUDMascotas.Repository
 			return await _context.Usuarios.Where(x=>x.Id == id).FirstOrDefaultAsync() ?? throw new ArgumentNullException() ;
 
 		}
+
+        public Task<Raza> GetByNombre(string? nombre)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<Usuario>> GetList()
         {
 			return await _context.Usuarios.ToListAsync();

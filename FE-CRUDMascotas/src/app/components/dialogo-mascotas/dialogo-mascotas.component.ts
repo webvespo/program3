@@ -21,11 +21,11 @@ export class DialogoMascotasComponent implements OnInit {
   razaSeleccionada: any;
   datosPropietario: any;
   razaList: Raza[] = [
-    { id: 1, nombre: 'Pitbull' },
-    { id: 2, nombre: 'Ovejero Alemán' },
-    { id: 3, nombre: 'Golden' },
-    { id: 4, nombre: 'Salchicha' },
-    { id: 5, nombre: 'Caniche' },
+    { nombre: 'Pitbull' },
+    { nombre: 'Ovejero Alemán' },
+    { nombre: 'Golden' },
+    { nombre: 'Salchicha' },
+    { nombre: 'Caniche' },
   ]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -56,12 +56,12 @@ export class DialogoMascotasComponent implements OnInit {
       this.editarData = item;
       this.miFormulario.setValue({
         idUsuario: this.editarData.nombreUsuario.id,
-        idRaza: this.editarData.raza.id,
         nombre: this.editarData.nombre,
         color: this.editarData.color,
         edad: this.editarData.edad,
         peso: this.editarData.peso,
         fechaCreacion: this.editarData.fechaCreacion,
+        razaForm: this.editarData.raza.nombre,
         NombreUsuario: {
           apellido: this.editarData.nombreUsuario.apellido,
           id: this.editarData.nombreUsuario.id,
@@ -70,7 +70,6 @@ export class DialogoMascotasComponent implements OnInit {
           sexo: this.editarData.nombreUsuario.sexo
         },
         raza: {
-          id: this.editarData.raza.id,
           nombre: this.editarData.raza.nombre
         }
       })
@@ -81,12 +80,12 @@ export class DialogoMascotasComponent implements OnInit {
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
       idUsuario: new FormControl(''),
-      idRaza: new FormControl(''),
-      nombre: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
-      color: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+      nombre: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      color: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       edad: new FormControl((''), [Validators.required]),
       peso: new FormControl((''), [Validators.required]),
       fechaCreacion: new FormControl(''),
+      razaForm: [''],
       NombreUsuario: new FormControl({
         apellido: new FormControl('')!,
         id: new FormControl('')!,
@@ -95,7 +94,6 @@ export class DialogoMascotasComponent implements OnInit {
         sexo: new FormControl('')!,
       })!,
       raza: new FormControl({
-        id: new FormControl('')!,
         nombre: new FormControl('')!,
       })
     })
@@ -105,12 +103,12 @@ export class DialogoMascotasComponent implements OnInit {
 
   public miFormulario = this.buildr.group({
     idUsuario: new FormControl(''),
-    idRaza: new FormControl(''),
     nombre: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     color: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     edad: new FormControl(this.buildr.control(''), [Validators.required]),
     peso: new FormControl(this.buildr.control(''), [Validators.required]),
     fechaCreacion: new FormControl('')!,
+    razaForm: [''],
     NombreUsuario: new FormControl({
       apellido: new FormControl('')!,
       id: new FormControl('')!,
@@ -119,7 +117,6 @@ export class DialogoMascotasComponent implements OnInit {
       sexo: new FormControl('')!,
     })!,
     raza: new FormControl({
-      id: new FormControl('')!,
       nombre: new FormControl('')!,
     })
   });
@@ -128,29 +125,6 @@ export class DialogoMascotasComponent implements OnInit {
     return this.miFormulario.value;
   }
 
-  obtenerNombreRazaSeleccionada() {
-    const razaSeleccionada = this.razaList.find(listarRazas => listarRazas.id === this.formMiFormulario.idRaza);
-    return razaSeleccionada ? razaSeleccionada.nombre : '';
-  }
-
-  obtenerNombrePropietarioPorId(){
-    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
-    return nombreSeleccionado ? nombreSeleccionado.nombre : '';
-  }
-
-  obtenerNombreUsuarioPorId(){
-    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
-    return nombreSeleccionado ? nombreSeleccionado.nombreUsuario : '';
-  }
-  
-  obtenerApellidoUsuarioPorId(){
-    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
-    return nombreSeleccionado ? nombreSeleccionado.apellido : '';
-  }
-  obtenerSexoUsuarioPorId(){
-    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
-    return nombreSeleccionado ? nombreSeleccionado.sexo : '';
-  }
   guardarCambios() {
     if (this.id != 0) {
       if (this.ingresoDatos.boton == "Eliminar") {
@@ -171,8 +145,7 @@ export class DialogoMascotasComponent implements OnInit {
           sexo: this.formMiFormulario.NombreUsuario.sexo
         },
         raza: {
-          id: this.formMiFormulario.idRaza,
-          nombre: this.obtenerNombreRazaSeleccionada()
+          nombre: this.formMiFormulario.raza.nombre
         }
       };
 
@@ -184,22 +157,20 @@ export class DialogoMascotasComponent implements OnInit {
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
         NombreUsuario: {
-          apellido: this.obtenerApellidoUsuarioPorId(),
-          id: this.formMiFormulario.idUsuario,
-          nombre: this.obtenerNombrePropietarioPorId(),
-          nombreUsuario: this.obtenerNombreUsuarioPorId(),
-          sexo: this.obtenerSexoUsuarioPorId()
+          apellido: this.formMiFormulario.NombreUsuario.apellido,
+          id: this.formMiFormulario.NombreUsuario.id,
+          nombre: this.formMiFormulario.NombreUsuario.nombre,
+          nombreUsuario: this.formMiFormulario.NombreUsuario.nombreUsuario,
+          sexo: this.formMiFormulario.NombreUsuario.sexo
         },
         raza: {
-          id: this.formMiFormulario.idRaza,
-          nombre: this.obtenerNombreRazaSeleccionada()
+          nombre: this.formMiFormulario.raza.nombre
         }
       };
 
       if (this.ingresoDatos.boton == 'Editar') {
         this.editarMascota(this.ingresoDatos.code, editaDatosMascota);
       } else {
-        console.log(creaNuevaMascota);
         this.agregarMascota(creaNuevaMascota);
       }
     }

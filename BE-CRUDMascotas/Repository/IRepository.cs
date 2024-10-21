@@ -9,6 +9,7 @@ namespace BE_CRUDMascotas.Repository
 		Task Delete(T entity);
 		Task<T> Add(T entity);
 		Task Update(T entity);
-	}
+        Task<Raza> GetByNombre(string? nombre);
+    }
 
 }
