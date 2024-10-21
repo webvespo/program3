@@ -1,11 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Mascota } from 'src/app/interfaces/mascota';
 import { MascotaService } from 'src/app/services/mascota.service';
 import { UsuarioService } from '../../services/usuario.service';
 import { Raza } from 'src/app/interfaces/Raza';
-import { Usuario } from 'src/app/interfaces/Usuario';
 
 @Component({
   selector: 'app-dialogo-mascotas',
@@ -16,14 +15,10 @@ export class DialogoMascotasComponent implements OnInit {
   ingresoDatos: any;
   editarData: any;
   id: any;
-  usuarioIdCombo: any;
   comboUsuariosList: any;
-  razaSeleccionada: any;
-  datosPropietario: any;
-  razaList: Raza[] = [
+  razaList: Raza[] = [ // Agregar nuevas razas acá
     { nombre: 'Pitbull' },
-    { nombre: 'Ovejero Alemán' },
-    { nombre: 'Golden' },
+    { nombre: 'Golden Retriever' },
     { nombre: 'Salchicha' },
     { nombre: 'Caniche' },
   ]
@@ -34,8 +29,6 @@ export class DialogoMascotasComponent implements OnInit {
     private _service: MascotaService,
     private _usuarioService: UsuarioService
   ) { }
-
-
 
   ngOnInit(): void {
     this._usuarioService.getUsuarios().subscribe((combo: any) => {
@@ -145,7 +138,7 @@ export class DialogoMascotasComponent implements OnInit {
           sexo: this.formMiFormulario.NombreUsuario.sexo
         },
         raza: {
-          nombre: this.formMiFormulario.raza.nombre
+          nombre: this.formMiFormulario.razaForm
         }
       };
 
@@ -164,7 +157,7 @@ export class DialogoMascotasComponent implements OnInit {
           sexo: this.formMiFormulario.NombreUsuario.sexo
         },
         raza: {
-          nombre: this.formMiFormulario.raza.nombre
+          nombre: this.formMiFormulario.razaForm
         }
       };
 
