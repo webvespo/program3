@@ -16,11 +16,13 @@ namespace BE_CRUDMascotas.Controllers
 
         private readonly IMapper _mapper;
         private readonly IRepository<Mascota> _mascotaRepository;
+        private readonly IRepository<Usuario> _usuarioRepository;
 
-        public MascotaController(IMapper mapper, IRepository<Mascota> mascotaRepository)
+        public MascotaController(IMapper mapper, IRepository<Mascota> mascotaRepository, IRepository<Usuario> usuarioRepository)
         {
             _mapper = mapper;
             _mascotaRepository = mascotaRepository;
+            _usuarioRepository = usuarioRepository;
         }
 
         [HttpGet]
@@ -129,7 +131,25 @@ namespace BE_CRUDMascotas.Controllers
                     return NotFound();
                 }
 
-                await _mascotaRepository.Update(mascota);
+                mascotaItem.Nombre = mascotaDto.Nombre;
+                mascotaItem.Color = mascotaDto.Color;
+                mascotaItem.Edad = mascotaDto.Edad;
+                mascotaItem.Peso = mascotaDto.Peso;
+                mascotaItem.FechaCreacion = mascotaDto.FechaCreacion;
+
+                if (mascotaItem.raza.Nombre != mascotaDto.raza.Nombre)
+                {
+                    mascotaItem.raza = new Raza { Nombre = mascotaDto.raza.Nombre };
+                }
+
+                var usuario = await _usuarioRepository.GetById(mascotaDto.NombreUsuario.Id);
+                if (usuario == null)
+                {
+                    return BadRequest("Invalid Usuario ID");
+                }
+                mascotaItem.NombreUsuario = usuario;
+
+                await _mascotaRepository.Update(mascotaItem);
 
                 return NoContent();
 

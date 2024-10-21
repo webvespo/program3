@@ -21,11 +21,10 @@
             <input formControlName="peso" matInput>
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
-
         <mat-form-field>
             <mat-label>Propietario: </mat-label>
-            <mat-select formControlName="NombreUsuario">
-                <mat-option *ngFor="let listarUsuarios of comboUsuariosList" [value]="listarUsuarios.nombreUsuario">
+            <mat-select formControlName="idUsuario">
+                <mat-option *ngFor="let listarUsuarios of comboUsuariosList" [value]="listarUsuarios.id">
                     {{listarUsuarios.nombreUsuario}}
                 </mat-option>
             </mat-select>
@@ -33,7 +32,11 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Raza: </mat-label>
-            <input formControlName="raza" matInput>
+            <mat-select formControlName="idRaza">
+                <mat-option *ngFor="let listarRazas of razaList" [value]="listarRazas.id">            
+                    {{listarRazas.nombre}}
+                </mat-option>
+            </mat-select>
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
     </div>
