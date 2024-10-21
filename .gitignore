@@ -1,8 +1,37 @@
-/.vscode/
-/BE-CRUDMascotas/.vs/
-/FE-CRUDMascotas/.vscode/
-/BE-CRUDMascotas/BE-CRUDMascotas/node_modules/
-/FE-CRUDMascotas/.angular/
-/BE-CRUDMascotas/bin/
-/BE-CRUDMascotas/obj/
-/BE-CRUDMascotas/BE-CRUDMascotas.sln
+# IDE - VSCode
+.vscode/
+**/.vscode/
+
+# IDE - Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# .NET Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.exe
+*.pdb
+*.dll
+*.cache
+
+# Angular
+.angular/
+dist/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment files
+*.env
+appsettings.*.json
+!appsettings.json
+!appsettings.Example.json
+
+# OS files
+.DS_Store
+Thumbs.db
