@@ -50,3 +50,4 @@ docker-compose up -d
 
 - Asegúrese de que Docker esté en ejecución antes de iniciar el contenedor de la base de datos.
 - El backend debe estar en ejecución para que el frontend funcione correctamente.
+- Usuario y contraseña: admin / 1234
