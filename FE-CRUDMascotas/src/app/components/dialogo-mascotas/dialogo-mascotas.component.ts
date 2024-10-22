@@ -69,6 +69,7 @@ export class DialogoMascotasComponent implements OnInit {
     })
   }
 
+  
   public fechaHoy = new Date();
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
