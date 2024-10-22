@@ -11,8 +11,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class DialogoComponent implements OnInit {
   selectSexo: string[] = [
-    'Masculino',
-    'Femenino',
+    'Male',
+    'Female',
     'Otro'
   ]
 
@@ -50,7 +50,7 @@ export class DialogoComponent implements OnInit {
   }
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
-      nombreUsuario: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),      
+      nombreUsuario: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       nombre: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       apellido: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       sexo: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
@@ -88,7 +88,7 @@ export class DialogoComponent implements OnInit {
       editaDatosPersona.id = this.ingresoDatos.code;
       this.editarUsuario2(editaDatosPersona.id, editaDatosPersona);
     }
-    else 
+    else
     {
      this.agregarUsuario(editaDatosPersona);
     }
