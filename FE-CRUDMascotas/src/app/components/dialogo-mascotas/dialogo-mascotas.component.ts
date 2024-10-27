@@ -58,7 +58,7 @@ export class DialogoMascotasComponent implements OnInit {
         NombreUsuario: {
           apellido: this.editarData.nombreUsuario.apellido,
           id: this.editarData.nombreUsuario.id,
-          nombre: this.editarData.nombreUsuario.nombre,
+          nombre: this.editarData.nombreUsuario.nombre, 
           nombreUsuario: this.editarData.nombreUsuario.nombreUsuario,
           sexo: this.editarData.nombreUsuario.sexo
         },
@@ -73,7 +73,7 @@ export class DialogoMascotasComponent implements OnInit {
   public fechaHoy = new Date();
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
-      idUsuario: new FormControl(''),
+      idUsuario: [''],
       nombre: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       color: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       edad: new FormControl((''), [Validators.required]),
@@ -81,11 +81,11 @@ export class DialogoMascotasComponent implements OnInit {
       fechaCreacion: new FormControl(''),
       razaForm: [''],
       NombreUsuario: new FormControl({
-        apellido: new FormControl('')!,
+         apellido: new FormControl('')!,
         id: new FormControl('')!,
         nombre: new FormControl('')!,
         nombreUsuario: new FormControl('')!,
-        sexo: new FormControl('')!,
+         sexo: new FormControl('')!,
       })!,
       raza: new FormControl({
         nombre: new FormControl('')!,
@@ -96,7 +96,7 @@ export class DialogoMascotasComponent implements OnInit {
   cerrarDialogo() { this.ref.close(); }
 
   public miFormulario = this.buildr.group({
-    idUsuario: new FormControl(''),
+    idUsuario:  [''],
     nombre: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     color: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     edad: new FormControl(this.buildr.control(''), [Validators.required]),
@@ -118,6 +118,27 @@ export class DialogoMascotasComponent implements OnInit {
   public get formMiFormulario(): any {
     return this.miFormulario.value;
   }
+
+  obtenerNombrePropietarioPorId(){
+    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
+    return nombreSeleccionado ? nombreSeleccionado.nombre : '';
+  }
+
+  obtenerNombreUsuarioPorId(){
+    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
+    return nombreSeleccionado ? nombreSeleccionado.nombreUsuario : '';
+  }
+  
+  obtenerApellidoUsuarioPorId(){
+    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
+    return nombreSeleccionado ? nombreSeleccionado.apellido : '';
+  }
+  obtenerSexoUsuarioPorId(){
+    const nombreSeleccionado = this.comboUsuariosList.find((listarUsuarios: { id: any; }) => listarUsuarios.id === this.formMiFormulario.idUsuario);
+    return nombreSeleccionado ? nombreSeleccionado.sexo : '';
+  }
+
+
 
   guardarCambios() {
     if (this.id != 0) {
@@ -143,6 +164,10 @@ export class DialogoMascotasComponent implements OnInit {
         }
       };
 
+      console.log(this.obtenerApellidoUsuarioPorId());
+      
+
+
       const creaNuevaMascota: Mascota = {
         id: 0,
         nombre: this.formMiFormulario.nombre,
@@ -151,11 +176,11 @@ export class DialogoMascotasComponent implements OnInit {
         peso: this.formMiFormulario.peso,
         fechaCreacion: this.fechaHoy,
         NombreUsuario: {
-          apellido: this.formMiFormulario.NombreUsuario.apellido,
-          id: this.formMiFormulario.NombreUsuario.id,
-          nombre: this.formMiFormulario.NombreUsuario.nombre,
-          nombreUsuario: this.formMiFormulario.NombreUsuario.nombreUsuario,
-          sexo: this.formMiFormulario.NombreUsuario.sexo
+          apellido: this.obtenerApellidoUsuarioPorId(),
+          id: this.formMiFormulario.idUsuario,
+          nombre: this.obtenerNombrePropietarioPorId(),
+          nombreUsuario: this.obtenerNombreUsuarioPorId(),
+          sexo: this.obtenerSexoUsuarioPorId()
         },
         raza: {
           nombre: this.formMiFormulario.razaForm
