@@ -9,21 +9,40 @@
     <table>
             <th>Seleccionar filtro: </th>
             <br>
-            <mat-label>Sexo: </mat-label>
-            <mat-select formControlName="sexo">
-                <mat-option *ngFor="let val of selectSexo" [value]="val" >
-                    {{val}}
-                </mat-option>
-            </mat-select>  
+            <button mat-flat-button (click)="showPersonas=true; showMascotas=false">Personas</button>
             <br>
-            <mat-label>Raza: </mat-label>
-            <mat-select formControlName="razaForm">
-                <mat-option *ngFor="let listarRazas of razaList" [value]="listarRazas.nombre">
-                    {{listarRazas.nombre}}
-                </mat-option>
-            </mat-select>
+            <br>
+            <button mat-flat-button (click)="showMascotas=true; showPersonas=false">Raza Mascotas</button>
+            <br>
+            <div *ngIf="showPersonas">
+                <br>
+                <mat-label>Sexo: </mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let val of selectSexo" [value]="val" >
+                        {{val}}
+                    </mat-option>
+                </mat-select>  
+            </div>
+            <br>
+            <div *ngIf="showMascotas">
+                <mat-label >Raza: </mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let listarRazas of razaList" [value]="listarRazas.nombre">
+                        {{listarRazas.nombre}}
+                    </mat-option>
+                </mat-select>
+            </div>
     </table>
 </div>
+<ng-template #reportePorSexoPersonas>
+    <div class="container">
+        <mat-toolbar>
+            <span>Reportes: </span>
+            <div class="example-spacer"></div>
+        </mat-toolbar>
+    </div>
+</ng-template>
+<ng-template #reportePersonas>
 <div class="container">
     <mat-toolbar>
         <span>Reportes: </span>
@@ -62,3 +81,4 @@
         </div>
     </div>
 </div>
+</ng-template>
