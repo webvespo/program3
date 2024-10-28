@@ -18,6 +18,8 @@ export class ReportesComponent implements OnInit {
 
   showPersonas:boolean = false;
   showMascotas:boolean = false;
+  reportePorSexoPersonas:boolean = false;
+  reportePorRazaMascota:boolean = false;
   selectSexo: string[] = [
     'Male',
     'Female',
@@ -56,9 +58,7 @@ export class ReportesComponent implements OnInit {
     )
   }
 
-  completarSegunSexo(){
-    
-  }
+
 
 
   ngAfterViewInit() {
