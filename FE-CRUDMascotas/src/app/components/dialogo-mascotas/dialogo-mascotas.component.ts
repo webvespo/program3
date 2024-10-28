@@ -164,10 +164,6 @@ export class DialogoMascotasComponent implements OnInit {
         }
       };
 
-      console.log(this.obtenerApellidoUsuarioPorId());
-      
-
-
       const creaNuevaMascota: Mascota = {
         id: 0,
         nombre: this.formMiFormulario.nombre,

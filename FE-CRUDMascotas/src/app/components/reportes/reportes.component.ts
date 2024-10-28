@@ -23,6 +23,7 @@ export class ReportesComponent implements OnInit {
     'Female',
     'Otro'
   ]
+  public verMale:string="";
 
   razaList: Raza[] = [ // Agregar nuevas razas acá
     { nombre: 'Pitbull' },
@@ -53,6 +54,10 @@ export class ReportesComponent implements OnInit {
       alert('Opss ocurrio un error');
     }
     )
+  }
+
+  completarSegunSexo(){
+    
   }
 
 
