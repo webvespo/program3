@@ -15,17 +15,17 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./reportes.component.css']
 })
 export class ReportesComponent implements OnInit {
-
-  showPersonas:boolean = false;
-  showMascotas:boolean = false;
-  reportePorSexoPersonas:boolean = false;
-  reportePorRazaMascota:boolean = false;
+  sexoSeleccionado!: string;
+  showPersonas: boolean = false;
+  showMascotas: boolean = false;
+  reportePorSexoPersonas: boolean = false;
+  reportePorRazaMascota: boolean = false;
   selectSexo: string[] = [
     'Male',
     'Female',
     'Otro'
   ]
-  public verMale:string="";
+  public verMale: string = "";
 
   razaList: Raza[] = [ // Agregar nuevas razas acá
     { nombre: 'Pitbull' },
@@ -41,14 +41,19 @@ export class ReportesComponent implements OnInit {
   @ViewChild(MatSort) Sort!: MatSort;
 
   constructor(private _usuarioService: UsuarioService,
-    
-  ){}
+
+  ) { }
 
 
   ngOnInit(): void {
     this.cargarUsuarios();
+    console.log(this.selectSexo);
   }
-  
+
+  onSexoSeleccionado(){
+    
+  }
+
   cargarUsuarios() {
     this._usuarioService.getUsuarios().subscribe(data => {
       this.dataSource.data = data;
