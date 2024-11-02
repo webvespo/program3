@@ -98,16 +98,29 @@ namespace BE_CRUDMascotas.Controllers
         {
             try
             {
+                var usuario = await _usuarioRepository.GetById(mascotaDto.NombreUsuario.Id);
+                if (usuario == null)
+                {
+                    return BadRequest("Invalid Usuario ID");
+                }
+
+                var raza = await _razaRepository.GetByNombre(mascotaDto.raza.Nombre);
+                if (raza == null)
+                {
+                    raza = await _razaRepository.Add(new Raza { Nombre = mascotaDto.raza.Nombre });
+                }
+
                 var mascota = _mapper.Map<Mascota>(mascotaDto);
 
                 mascota.FechaCreacion = DateTime.Now;
+                mascota.NombreUsuario = usuario;
+                mascota.raza = raza;
 
                 mascota = await _mascotaRepository.Add(mascota);
 
                 var mascotaItemDto = _mapper.Map<MascotaDTO>(mascota);
 
                 return CreatedAtAction("Get", new { id = mascotaItemDto.Id }, mascotaItemDto);
-
             }
             catch (Exception ex)
             {

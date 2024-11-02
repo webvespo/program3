@@ -74,9 +74,9 @@ export class DialogoMascotasComponent implements OnInit {
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
       idUsuario: [''],
-      nombre: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      color: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      edad: new FormControl((''), [Validators.required]),
+      nombre: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+      color: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+      edad: [''],
       peso: new FormControl((''), [Validators.required]),
       fechaCreacion: new FormControl(''),
       razaForm: [''],
@@ -149,8 +149,8 @@ export class DialogoMascotasComponent implements OnInit {
         id: this.ingresoDatos.code,
         nombre: this.formMiFormulario.nombre,
         color: this.formMiFormulario.color,
-        edad: this.formMiFormulario.edad,
-        peso: this.formMiFormulario.peso,
+        edad: parseInt(this.formMiFormulario.edad),
+        peso: parseFloat(this.formMiFormulario.peso),
         fechaCreacion: this.fechaHoy,
         NombreUsuario: {
           apellido: this.formMiFormulario.NombreUsuario.apellido,
@@ -168,8 +168,8 @@ export class DialogoMascotasComponent implements OnInit {
         id: 0,
         nombre: this.formMiFormulario.nombre,
         color: this.formMiFormulario.color,
-        edad: this.formMiFormulario.edad,
-        peso: this.formMiFormulario.peso,
+        edad: parseInt(this.formMiFormulario.edad),
+        peso: parseFloat(this.formMiFormulario.peso),
         fechaCreacion: this.fechaHoy,
         NombreUsuario: {
           apellido: this.obtenerApellidoUsuarioPorId(),

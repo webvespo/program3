@@ -16,10 +16,8 @@ namespace BE_CRUDMascotas.Repository
 		public async Task<Mascota> Add(Mascota mascota)
 		{
 			_context.Mascotas.Add(mascota);
-			_context.Usuarios.Add(mascota.NombreUsuario);
-			_context.Raza.Add(mascota.raza);
-			await _context.SaveChangesAsync();
-			return mascota;
+        	await _context.SaveChangesAsync();
+        	return mascota;
 		}
 
 		public async Task Delete(Mascota mascota)

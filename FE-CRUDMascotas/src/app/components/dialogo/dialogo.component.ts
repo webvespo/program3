@@ -50,9 +50,9 @@ export class DialogoComponent implements OnInit {
   }
   configDialogoDataEmpty() {
     this.miFormulario = this.buildr.group({
-      nombreUsuario: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      nombre: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-      apellido: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      nombreUsuario: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+      nombre: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+      apellido: new FormControl((''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
       sexo: new FormControl((''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
     })
   }
@@ -62,9 +62,9 @@ export class DialogoComponent implements OnInit {
 
   public miFormulario = this.buildr.group({
 
-    nombreUsuario: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    nombre: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
-    apellido: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+    nombreUsuario: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+    nombre: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
+    apellido: new FormControl(this.buildr.control(''), [Validators.required, Validators.pattern('([a-zA-Z]\\s*[a-zA-Z]*)+[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')]),
     sexo: [this.buildr.control(''), Validators.required],
   });
 
